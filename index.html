@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIDA Habitat – Expert en rénovation en Suisse et France</title>
+  <meta name="description" content="VIDA Habitat, votre expert en rénovation de bâtiments en Suisse et en France. Plomberie, électricité, peinture, sol, maçonnerie, architecture. Devis gratuit.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<header class="site-header transparent">
+  <a href="index.html" class="header-logo">
+    <div class="logo-mark">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 12L12 3l9 9v9H15v-6H9v6H3v-9z"/>
+      </svg>
+    </div>
+    <span class="logo-text">VIDA <span>Habitat</span></span>
+  </a>
+
+  <nav class="header-nav">
+    <a href="index.html" class="nav-link">Accueil</a>
+    <a href="prestations.html" class="nav-link">Prestations</a>
+    <div class="nav-item">
+      <a href="metiers.html" class="nav-link">Métiers <span class="nav-caret">▾</span></a>
+      <div class="nav-dropdown">
+        <a href="metiers/chauffage-plomberie.html">Chauffage &amp; Plomberie</a>
+        <a href="metiers/sol.html">Revêtements de sol</a>
+        <a href="metiers/electricite.html">Électricité</a>
+        <a href="metiers/peinture.html">Peinture</a>
+        <a href="metiers/maconnerie.html">Maçonnerie</a>
+        <a href="metiers/architecture.html">Architecture</a>
+        <a href="metiers/suivi-chantier.html">Suivi de chantier</a>
+      </div>
+    </div>
+    <a href="histoire.html" class="nav-link">Notre histoire</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+  </nav>
+
+  <div class="header-actions">
+    <div class="header-phone">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+      +41 22 000 00 00
+    </div>
+    <a href="contact.html" class="btn btn-accent">Devis gratuit</a>
+  </div>
+
+  <button class="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- ═══ MOBILE MENU ═══ -->
+<div class="mobile-menu">
+  <a href="index.html">Accueil</a>
+  <a href="prestations.html">Prestations</a>
+  <a href="metiers.html">Métiers</a>
+  <div class="mobile-submenu">
+    <a href="metiers/chauffage-plomberie.html">Chauffage &amp; Plomberie</a>
+    <a href="metiers/sol.html">Revêtements de sol</a>
+    <a href="metiers/electricite.html">Électricité</a>
+    <a href="metiers/peinture.html">Peinture</a>
+    <a href="metiers/maconnerie.html">Maçonnerie</a>
+    <a href="metiers/architecture.html">Architecture</a>
+    <a href="metiers/suivi-chantier.html">Suivi de chantier</a>
+  </div>
+  <a href="histoire.html">Notre histoire</a>
+  <a href="contact.html">Contact</a>
+  <div class="mobile-menu-phone">+41 22 000 00 00</div>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1920&q=85');"></div>
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <div class="hero-content">
+      <span class="label">Expert en rénovation</span>
+      <h1>Rénovatons ensemble<br>vos espaces</h1>
+      <p>VIDA Habitat transforme vos bâtiments avec rigueur, expertise et élégance. Du diagnostic à la livraison, nous vous accompagnons à chaque étape de votre projet en Suisse et en France.</p>
+      <div class="hero-actions">
+        <a href="contact.html" class="btn btn-accent">Obtenir un devis gratuit</a>
+        <a href="prestations.html" class="btn btn-outline">Découvrir nos prestations</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    Défiler
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══ STATS BAR ═══ -->
+<section class="stats-bar">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <div class="stat-number"><span data-count="15" data-suffix="+">0+</span></div>
+      <div class="stat-label">Années d'expérience</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number"><span data-count="600" data-suffix="+">0+</span></div>
+      <div class="stat-label">Projets réalisés</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number"><span data-count="98" data-suffix="%">0%</span></div>
+      <div class="stat-label">Clients satisfaits</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number"><span data-count="2">0</span></div>
+      <div class="stat-label">Pays d'intervention</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ INTRO ═══ -->
+<section class="section bg-light">
+  <div class="container">
+    <div class="split-section reverse" style="border-radius: 12px; overflow: hidden; box-shadow: 0 12px 48px rgba(0,0,0,0.12);">
+      <div class="split-img">
+        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=900&q=85" alt="Chantier de rénovation VIDA Habitat" loading="lazy">
+      </div>
+      <div class="split-content">
+        <span class="label">Qui sommes-nous</span>
+        <h2>L'excellence de la rénovation depuis 2009</h2>
+        <p>Fondée en 2009, VIDA Habitat est une entreprise générale de rénovation opérant en Suisse et en France. Nous réunissons des artisans qualifiés dans chaque corps de métier pour offrir un service clé en main, du premier appel jusqu'à la remise des clés.</p>
+        <div class="feature-list" style="margin: 1.5rem 0;">
+          <div class="feature-item">
+            <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+            <div><h4>Artisans certifiés</h4><p style="color:rgba(255,255,255,0.6);font-size:.85rem;">Chaque intervenant est qualifié et régulièrement formé</p></div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+            <div><h4>Devis transparent et gratuit</h4><p style="color:rgba(255,255,255,0.6);font-size:.85rem;">Aucune surprise, le prix convenu est le prix final</p></div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+            <div><h4>Délais respectés</h4><p style="color:rgba(255,255,255,0.6);font-size:.85rem;">Nous planifions avec précision et tenons nos engagements</p></div>
+          </div>
+        </div>
+        <a href="histoire.html" class="btn btn-accent">Notre histoire</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SERVICES ═══ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header text-center reveal">
+      <span class="label">Nos domaines</span>
+      <h2>Des experts pour chaque métier</h2>
+      <div class="divider"></div>
+      <p>De la plomberie à l'architecture, VIDA Habitat regroupe tous les corps de métier indispensables à votre projet de rénovation.</p>
+    </div>
+
+    <div class="grid-3 stagger" style="gap: 1.2rem;">
+      <a href="metiers/chauffage-plomberie.html" class="service-card">
+        <div class="service-card-bg" style="background-image: url('https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=700&q=80');"></div>
+        <div class="service-card-overlay"></div>
+        <div class="service-card-content">
+          <div class="service-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 8C8 10 5.9 16.17 3.82 19.82A2 2 0 005.6 22c3.19 0 7.34-5.67 9.4-11 1.84 4.86 7.4 10 9 10a2 2 0 001.78-2.9C23.2 14.39 19.5 6 17 8zM7 4a1 1 0 000 2h10a1 1 0 000-2H7z"/></svg>
+          </div>
+          <h3>Chauffage &amp; Plomberie</h3>
+          <p class="service-card-desc">Installation, réparation et entretien de systèmes de chauffage et plomberie.</p>
+          <span class="service-card-link">Découvrir →</span>
+        </div>
+      </a>
+
+      <a href="metiers/sol.html" class="service-card">
+        <div class="service-card-bg" style="background-image: url('https://images.unsplash.com/photo-1615529162924-f8605388461d?auto=format&fit=crop&w=700&q=80');"></div>
+        <div class="service-card-overlay"></div>
+        <div class="service-card-content">
+          <div class="service-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+          </div>
+          <h3>Revêtements de sol</h3>
+          <p class="service-card-desc">Parquet, carrelage, béton ciré et tous types de revêtements haut de gamme.</p>
+          <span class="service-card-link">Découvrir →</span>
+        </div>
+      </a>
+
+      <a href="metiers/electricite.html" class="service-card">
+        <div class="service-card-bg" style="background-image: url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=700&q=80');"></div>
+        <div class="service-card-overlay"></div>
+        <div class="service-card-content">
+          <div class="service-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>
+          </div>
+          <h3>Électricité</h3>
+          <p class="service-card-desc">Mise aux normes, installation électrique et domotique pour tous bâtiments.</p>
+          <span class="service-card-link">Découvrir →</span>
+        </div>
+      </a>
+
+      <a href="metiers/peinture.html" class="service-card">
+        <div class="service-card-bg" style="background-image: url('https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&w=700&q=80');"></div>
+        <div class="service-card-overlay"></div>
+        <div class="service-card-content">
+          <div class="service-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M7 14c-1.66 0-3 1.34-3 3 0 1.31-1.16 2-2 2 .92 1.22 2.49 2 4 2 2.21 0 4-1.79 4-4 0-1.66-1.34-3-3-3zm13.71-9.37l-1.34-1.34a1 1 0 00-1.41 0L9 12.25 11.75 15l8.96-8.96a1 1 0 000-1.41z"/></svg>
+          </div>
+          <h3>Peinture</h3>
+          <p class="service-card-desc">Peinture intérieure et extérieure, enduits décoratifs et finitions haut de gamme.</p>
+          <span class="service-card-link">Découvrir →</span>
+        </div>
+      </a>
+
+      <a href="metiers/maconnerie.html" class="service-card">
+        <div class="service-card-bg" style="background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=700&q=80');"></div>
+        <div class="service-card-overlay"></div>
+        <div class="service-card-content">
+          <div class="service-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M19 4H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V8h10v2z"/></svg>
+          </div>
+          <h3>Maçonnerie</h3>
+          <p class="service-card-desc">Travaux de maçonnerie générale, démolition, extension et réfection de façades.</p>
+          <span class="service-card-link">Découvrir →</span>
+        </div>
+      </a>
+
+      <a href="metiers/architecture.html" class="service-card">
+        <div class="service-card-bg" style="background-image: url('https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=700&q=80');"></div>
+        <div class="service-card-overlay"></div>
+        <div class="service-card-content">
+          <div class="service-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+          </div>
+          <h3>Architecture</h3>
+          <p class="service-card-desc">Conception, permis de construire et suivi architectural de vos projets.</p>
+          <span class="service-card-link">Découvrir →</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="text-center mt-4">
+      <a href="metiers.html" class="btn btn-dark">Voir tous nos métiers</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROCESS ═══ -->
+<section class="section bg-light">
+  <div class="container">
+    <div class="section-header text-center reveal">
+      <span class="label">Notre méthode</span>
+      <h2>De votre appel à la livraison</h2>
+      <div class="divider"></div>
+      <p>Nous avons conçu un processus simple et transparent pour que votre projet se déroule sans stress, de A à Z.</p>
+    </div>
+
+    <div class="process-track stagger" style="margin-top: 3rem;">
+      <div class="process-step">
+        <div class="process-step-num">01</div>
+        <h4>Prise de contact</h4>
+        <p>Appelez-nous ou envoyez un message. Nous répondons sous 24h.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">02</div>
+        <h4>Visite &amp; Diagnostic</h4>
+        <p>Un expert se déplace gratuitement pour évaluer votre projet sur site.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">03</div>
+        <h4>Devis personnalisé</h4>
+        <p>Vous recevez un devis détaillé, clair et sans frais cachés.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">04</div>
+        <h4>Réalisation des travaux</h4>
+        <p>Nos artisans interviennent selon le planning convenu avec vous.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">05</div>
+        <h4>Réception &amp; Facturation</h4>
+        <p>Visite de fin de chantier et facturation une fois votre satisfaction confirmée.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHY US ═══ -->
+<section class="section" style="background: var(--primary);">
+  <div class="container">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;">
+      <div class="reveal from-left">
+        <span class="label">Pourquoi nous choisir</span>
+        <h2 style="color: var(--white); margin: 1rem 0 1.5rem;">La confiance se construit chantier après chantier</h2>
+        <p style="color: rgba(255,255,255,0.7); margin-bottom: 2rem;">Chaque projet est unique. C'est pourquoi nous mobilisons des artisans spécialisés dans chaque domaine, coordonnés par un chef de projet dédié qui veille à la cohérence et à la qualité de l'ensemble.</p>
+        <a href="histoire.html" class="btn btn-accent">En savoir plus</a>
+      </div>
+
+      <div class="why-grid reveal from-right">
+        <div class="why-card">
+          <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div>
+          <div>
+            <h4>Qualité garantie</h4>
+            <p>Garantie décennale sur tous nos travaux de construction.</p>
+          </div>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+          <div>
+            <h4>Devis transparent</h4>
+            <p>Prix ferme et définitif, sans surprise à la fin du chantier.</p>
+          </div>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div>
+          <div>
+            <h4>Équipe dédiée</h4>
+            <p>Un interlocuteur unique coordonne tous les corps de métier.</p>
+          </div>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div>
+          <div>
+            <h4>Suivi de chantier</h4>
+            <p>Rapport d'avancement hebdomadaire et accès photos en temps réel.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GALLERY ═══ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header text-center reveal">
+      <span class="label">Nos réalisations</span>
+      <h2>Un aperçu de notre savoir-faire</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1560185893-a55a6bdd00bb?auto=format&fit=crop&w=800&q=80" alt="Rénovation intérieure luxe" loading="lazy">
+        <div class="gallery-item-overlay">
+          <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=800&q=80" alt="Cuisine rénovée" loading="lazy">
+        <div class="gallery-item-overlay"><svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=800&q=80" alt="Salle de bain rénovée" loading="lazy">
+        <div class="gallery-item-overlay"><svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1555041469-149851716f9b?auto=format&fit=crop&w=800&q=80" alt="Salon moderne" loading="lazy">
+        <div class="gallery-item-overlay"><svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Villa rénovée" loading="lazy">
+        <div class="gallery-item-overlay"><svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg></div>
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <a href="prestations.html" class="btn btn-outline-accent">Voir toutes nos réalisations</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MAP / ZONES ═══ -->
+<div class="map-section" id="zones">
+  <div class="map-info">
+    <span class="label">Zones d'intervention</span>
+    <h2>Suisse &amp; France frontalière</h2>
+    <p>VIDA Habitat intervient dans toute la Suisse romande et alémanique, ainsi que dans les régions françaises limitrophes. Notre mobilité nous permet d'être présents partout où vos projets nous amènent.</p>
+    <div class="zones-grid">
+      <div class="zone-group">
+        <h4>🇨🇭 Suisse</h4>
+        <ul>
+          <li>Genève</li>
+          <li>Lausanne</li>
+          <li>Zurich</li>
+          <li>Berne</li>
+          <li>Neuchâtel</li>
+          <li>Fribourg</li>
+          <li>Basel</li>
+          <li>Lucerne</li>
+        </ul>
+      </div>
+      <div class="zone-group">
+        <h4>🇫🇷 France</h4>
+        <ul>
+          <li>Annecy</li>
+          <li>Annemasse</li>
+          <li>Évian-les-Bains</li>
+          <li>St-Julien-en-Genevois</li>
+          <li>Chambéry</li>
+          <li>Grenoble</li>
+          <li>Bellegarde-sur-V.</li>
+          <li>Lyon</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="map-embed">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1399697.4899!2d6.0!3d46.8!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478c64ef6f596f57%3A0xa0f49e2b5acbe99!2sSuisse!5e0!3m2!1sfr!2sfr!4v1700000000000"
+      width="100%"
+      height="100%"
+      style="border:0;"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Zone d'intervention VIDA Habitat">
+    </iframe>
+  </div>
+</div>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section class="section bg-light">
+  <div class="container">
+    <div class="section-header text-center reveal">
+      <span class="label">Témoignages</span>
+      <h2>Ce que disent nos clients</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="testimonials-grid stagger">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        </div>
+        <p>"Rénovation complète de notre appartement à Genève. L'équipe VIDA Habitat a été irréprochable : ponctuelle, propre et à l'écoute. Le résultat dépasse nos attentes. Nous les recommandons les yeux fermés !"</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">ML</div>
+          <div>
+            <div class="testimonial-name">Marie-Laure Fontaine</div>
+            <div class="testimonial-loc">Genève, Suisse</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        </div>
+        <p>"J'ai confié la rénovation de ma villa à Lausanne à VIDA Habitat. Travaux de maçonnerie, peinture, sol — tout a été géré par un seul interlocuteur. C'est un luxe que de ne pas courir après 5 artisans différents !"</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">PD</div>
+          <div>
+            <div class="testimonial-name">Pierre Dumont</div>
+            <div class="testimonial-loc">Lausanne, Suisse</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        </div>
+        <p>"Excellente collaboration pour la rénovation de notre appartement à Annecy. L'équipe est venue depuis Genève sans problème. Délais tenus, finitions parfaites. Je recommande vivement VIDA Habitat !"</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">SC</div>
+          <div>
+            <div class="testimonial-name">Sophie Cartier</div>
+            <div class="testimonial-loc">Annecy, France</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA BANNER ═══ -->
+<section class="cta-banner">
+  <div class="cta-banner-bg" style="background-image: url('https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=1920&q=80');"></div>
+  <div class="cta-banner-overlay"></div>
+  <div class="container">
+    <div class="cta-banner-content reveal">
+      <span class="label">Prêt à démarrer ?</span>
+      <h2>Votre projet mérite le meilleur</h2>
+      <p>Contactez-nous dès aujourd'hui pour obtenir votre devis gratuit et sans engagement. Notre équipe vous répond sous 24 heures.</p>
+      <div class="flex flex-center gap-1" style="flex-wrap:wrap;">
+        <a href="contact.html" class="btn btn-accent">Demander un devis</a>
+        <a href="tel:+41220000000" class="btn btn-outline">+41 22 000 00 00</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="header-logo" style="margin-bottom:1rem;">
+          <div class="logo-mark">
+            <svg viewBox="0 0 24 24"><path d="M3 12L12 3l9 9v9H15v-6H9v6H3v-9z"/></svg>
+          </div>
+          <span class="logo-text">VIDA <span>Habitat</span></span>
+        </div>
+        <p class="footer-tagline">Votre expert en rénovation de bâtiments en Suisse et en France.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-btn" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h5>Activités</h5>
+        <ul>
+          <li><a href="prestations.html#renovation-interieure">Rénovation intérieure</a></li>
+          <li><a href="prestations.html#renovation-exterieure">Rénovation extérieure</a></li>
+          <li><a href="prestations.html#amenagement">Aménagement intérieur</a></li>
+          <li><a href="prestations.html#cle-en-main">Clé en main</a></li>
+          <li><a href="prestations.html#remise-en-etat">Remise en état</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Métiers</h5>
+        <ul>
+          <li><a href="metiers/chauffage-plomberie.html">Chauffage &amp; Plomberie</a></li>
+          <li><a href="metiers/sol.html">Revêtements de sol</a></li>
+          <li><a href="metiers/electricite.html">Électricité</a></li>
+          <li><a href="metiers/peinture.html">Peinture</a></li>
+          <li><a href="metiers/maconnerie.html">Maçonnerie</a></li>
+          <li><a href="metiers/architecture.html">Architecture</a></li>
+          <li><a href="metiers/suivi-chantier.html">Suivi de chantier</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="prestations.html">Prestations</a></li>
+          <li><a href="metiers.html">Nos métiers</a></li>
+          <li><a href="histoire.html">Notre histoire</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html">Devis gratuit</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Horaires</h5>
+        <div class="hours-row"><span>Lun – Ven</span> 08:00 – 18:00</div>
+        <div class="hours-row"><span>Samedi</span> 09:00 – 13:00</div>
+        <div class="hours-row"><span>Dimanche</span> Fermé</div>
+        <div style="margin-top: 1.5rem;">
+          <h5>Contact</h5>
+          <p style="font-size:.84rem;color:rgba(255,255,255,0.55);line-height:1.9;">
+            Rue de la Paix 12<br>1201 Genève – Suisse<br>
+            <a href="tel:+41220000000" style="color:var(--accent);">+41 22 000 00 00</a><br>
+            <a href="mailto:contact@vidahabitat.ch" style="color:var(--accent);">contact@vidahabitat.ch</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 VIDA Habitat. Tous droits réservés.</p>
+      <p><a href="#">Mentions légales</a> · <a href="#">Politique de confidentialité</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to top -->
+<button class="back-top" aria-label="Retour en haut">
+  <svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
+</button>
+
+<script src="js/main.js"></script>
+</body>
+</html>
