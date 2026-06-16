@@ -237,11 +237,22 @@ p { max-width: 68ch; }
 
 /* Dropdown for Métiers */
 .nav-item { position: relative; }
+/* Pont invisible qui empêche le dropdown de se fermer quand la souris
+   traverse l'espace entre le lien et le menu déroulant */
+.nav-item::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: -20px;
+  right: -20px;
+  height: 16px;
+  background: transparent;
+}
 .nav-dropdown {
   position: absolute;
-  top: calc(100% + 10px);
+  top: calc(100% + 14px);
   left: 50%;
-  transform: translateX(-50%) translateY(8px);
+  transform: translateX(-50%) translateY(6px);
   background: var(--primary);
   border: 1px solid rgba(255,255,255,0.1);
   border-top: 3px solid var(--accent);
