@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nos Métiers – VIDA Habitat</title>
+  <meta name="description" content="Chauffage, plomberie, électricité, sol, peinture, maçonnerie, architecture : tous les métiers de la rénovation réunis chez VIDA Habitat.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .metier-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .metier-big-card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: block;
+      aspect-ratio: 3/4;
+      cursor: pointer;
+    }
+    .metier-big-card-bg {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      transition: transform 0.6s cubic-bezier(.4,0,.2,1);
+    }
+    .metier-big-card:hover .metier-big-card-bg { transform: scale(1.07); }
+    .metier-big-card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(10,20,35,0.92) 0%, rgba(10,20,35,0.2) 60%);
+      transition: var(--transition);
+    }
+    .metier-big-card:hover .metier-big-card-overlay {
+      background: linear-gradient(to top, rgba(10,20,35,0.97) 0%, rgba(10,20,35,0.4) 70%);
+    }
+    .metier-big-card-content {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 2.2rem 2rem; color: var(--white);
+    }
+    .metier-big-card-icon {
+      width: 52px; height: 52px;
+      background: var(--accent); border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .metier-big-card-icon svg { width: 26px; height: 26px; fill: var(--primary); }
+    .metier-big-card-content h3 { color: var(--white); margin-bottom: 0.6rem; }
+    .metier-big-card-desc {
+      font-size: 0.85rem; color: rgba(255,255,255,0.7);
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.4s, opacity 0.3s; opacity: 0;
+    }
+    .metier-big-card:hover .metier-big-card-desc { max-height: 80px; opacity: 1; }
+    .metier-big-card-cta {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      color: var(--accent); font-family: 'Montserrat',sans-serif;
+      font-size: 0.76rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; margin-top: 1rem;
+      opacity: 0; transform: translateX(-6px);
+      transition: opacity 0.3s 0.1s, transform 0.3s 0.1s;
+    }
+    .metier-big-card:hover .metier-big-card-cta { opacity: 1; transform: translateX(0); }
+    @media(max-width:900px){.metier-cards-grid{grid-template-columns:1fr 1fr;}}
+    @media(max-width:560px){.metier-cards-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+
+<header class="site-header solid">
+  <a href="index.html" class="header-logo"><div class="logo-mark"><svg viewBox="0 0 24 24"><path d="M3 12L12 3l9 9v9H15v-6H9v6H3v-9z"/></svg></div><span class="logo-text">VIDA <span>Habitat</span></span></a>
+  <nav class="header-nav">
+    <a href="index.html" class="nav-link">Accueil</a>
+    <a href="prestations.html" class="nav-link">Prestations</a>
+    <div class="nav-item">
+      <a href="metiers.html" class="nav-link active">Métiers <span class="nav-caret">▾</span></a>
+      <div class="nav-dropdown">
+        <a href="metiers/chauffage-plomberie.html">Chauffage &amp; Plomberie</a>
+        <a href="metiers/sol.html">Revêtements de sol</a>
+        <a href="metiers/electricite.html">Électricité</a>
+        <a href="metiers/peinture.html">Peinture</a>
+        <a href="metiers/maconnerie.html">Maçonnerie</a>
+        <a href="metiers/architecture.html">Architecture</a>
+        <a href="metiers/suivi-chantier.html">Suivi de chantier</a>
+      </div>
+    </div>
+    <a href="histoire.html" class="nav-link">Notre histoire</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+  </nav>
+  <div class="header-actions">
+    <div class="header-phone"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>+41 22 000 00 00</div>
+    <a href="contact.html" class="btn btn-accent">Devis gratuit</a>
+  </div>
+  <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</header>
+
+<div class="mobile-menu">
+  <a href="index.html">Accueil</a><a href="prestations.html">Prestations</a><a href="metiers.html">Métiers</a>
+  <div class="mobile-submenu"><a href="metiers/chauffage-plomberie.html">Chauffage &amp; Plomberie</a><a href="metiers/sol.html">Revêtements de sol</a><a href="metiers/electricite.html">Électricité</a><a href="metiers/peinture.html">Peinture</a><a href="metiers/maconnerie.html">Maçonnerie</a><a href="metiers/architecture.html">Architecture</a><a href="metiers/suivi-chantier.html">Suivi de chantier</a></div>
+  <a href="histoire.html">Notre histoire</a><a href="contact.html">Contact</a>
+  <div class="mobile-menu-phone">+41 22 000 00 00</div>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1920&q=85');"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="container">
+    <div class="page-hero-content">
+      <span class="label">Notre expertise</span>
+      <h1>Nos Métiers</h1>
+      <nav class="breadcrumb"><a href="index.html">Accueil</a> › <span>Métiers</span></nav>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="section-sm bg-light">
+  <div class="container text-center reveal">
+    <span class="label">Polyvalence &amp; Expertise</span>
+    <h2 style="margin: 1rem auto 1rem; max-width: 700px;">7 corps de métier, une seule entreprise</h2>
+    <div class="divider"></div>
+    <p style="margin: 0 auto; max-width: 70ch; color: var(--text-mid);">VIDA Habitat réunit sous un même toit tous les artisans spécialisés nécessaires à votre projet. Plus besoin de coordonner plusieurs intervenants : nous gérons tout, de A à Z.</p>
+  </div>
+</section>
+
+<!-- MÉTIERS GRID -->
+<section class="section">
+  <div class="container">
+    <div class="metier-cards-grid stagger">
+
+      <a href="metiers/chauffage-plomberie.html" class="metier-big-card">
+        <div class="metier-big-card-bg" style="background-image: url('https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=700&q=80');"></div>
+        <div class="metier-big-card-overlay"></div>
+        <div class="metier-big-card-content">
+          <div class="metier-big-card-icon"><svg viewBox="0 0 24 24"><path d="M17 8C8 10 5.9 16.17 3.82 19.82A2 2 0 005.6 22c3.19 0 7.34-5.67 9.4-11 1.84 4.86 7.4 10 9 10a2 2 0 001.78-2.9C23.2 14.39 19.5 6 17 8z"/></svg></div>
+          <h3>Chauffage &amp; Plomberie</h3>
+          <p class="metier-big-card-desc">Pompes à chaleur, chaudières, chauffage au sol, plomberie sanitaire et réparations urgentes.</p>
+          <span class="metier-big-card-cta">Explorer ce métier →</span>
+        </div>
+      </a>
+
+      <a href="metiers/sol.html" class="metier-big-card">
+        <div class="metier-big-card-bg" style="background-image: url('https://images.unsplash.com/photo-1615529162924-f8605388461d?auto=format&fit=crop&w=700&q=80');"></div>
+        <div class="metier-big-card-overlay"></div>
+        <div class="metier-big-card-content">
+          <div class="metier-big-card-icon"><svg viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg></div>
+          <h3>Revêtements de sol</h3>
+          <p class="metier-big-card-desc">Parquet massif, stratifié, carrelage grand format, béton ciré et vinyle de qualité.</p>
+          <span class="metier-big-card-cta">Explorer ce métier →</span>
+        </div>
+      </a>
+
+      <a href="metiers/suivi-chantier.html" class="metier-big-card">
+        <div class="metier-big-card-bg" style="background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=700&q=80');"></div>
+        <div class="metier-big-card-overlay"></div>
+        <div class="metier-big-card-content">
+          <div class="metier-big-card-icon"><svg viewBox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div>
+          <h3>Suivi de chantier</h3>
+          <p class="metier-big-card-desc">Coordination des corps de métier, planning, rapports d'avancement et contrôle qualité.</p>
+          <span class="metier-big-card-cta">Explorer ce métier →</span>
+        </div>
+      </a>
+
+      <a href="metiers/electricite.html" class="metier-big-card">
+        <div class="metier-big-card-bg" style="background-image: url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=700&q=80');"></div>
+        <div class="metier-big-card-overlay"></div>
+        <div class="metier-big-card-content">
+          <div class="metier-big-card-icon"><svg viewBox="0 0 24 24"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg></div>
+          <h3>Électricité</h3>
+          <p class="metier-big-card-desc">Installations électriques, tableaux, domotique, éclairage et mise aux normes.</p>
+          <span class="metier-big-card-cta">Explorer ce métier →</span>
+        </div>
+      </a>
+
+      <a href="metiers/peinture.html" class="metier-big-card">
+        <div class="metier-big-card-bg" style="background-image: url('https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&w=700&q=80');"></div>
+        <div class="metier-big-card-overlay"></div>
+        <div class="metier-big-card-content">
+          <div class="metier-big-card-icon"><svg viewBox="0 0 24 24"><path d="M7 14c-1.66 0-3 1.34-3 3 0 1.31-1.16 2-2 2 .92 1.22 2.49 2 4 2 2.21 0 4-1.79 4-4 0-1.66-1.34-3-3-3zm13.71-9.37l-1.34-1.34a1 1 0 00-1.41 0L9 12.25 11.75 15l8.96-8.96a1 1 0 000-1.41z"/></svg></div>
+          <h3>Peinture</h3>
+          <p class="metier-big-card-desc">Peinture intérieure, extérieure, enduits décoratifs, papier peint et finitions haut de gamme.</p>
+          <span class="metier-big-card-cta">Explorer ce métier →</span>
+        </div>
+      </a>
+
+      <a href="metiers/maconnerie.html" class="metier-big-card">
+        <div class="metier-big-card-bg" style="background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=700&q=80');"></div>
+        <div class="metier-big-card-overlay"></div>
+        <div class="metier-big-card-content">
+          <div class="metier-big-card-icon"><svg viewBox="0 0 24 24"><path d="M19 4H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V8h10v2z"/></svg></div>
+          <h3>Maçonnerie</h3>
+          <p class="metier-big-card-desc">Démolition, construction, extension, ravalement de façade et travaux de gros œuvre.</p>
+          <span class="metier-big-card-cta">Explorer ce métier →</span>
+        </div>
+      </a>
+
+      <a href="metiers/architecture.html" class="metier-big-card" style="grid-column: span 3;">
+        <div class="metier-big-card-bg" style="background-image: url('https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1400&q=80'); aspect-ratio: unset; height: 340px;"></div>
+        <div class="metier-big-card-overlay"></div>
+        <div class="metier-big-card-content" style="display:flex;align-items:flex-end;gap:2rem;">
+          <div>
+            <div class="metier-big-card-icon"><svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg></div>
+            <h3 style="font-size: 2rem;">Architecture</h3>
+            <p class="metier-big-card-desc" style="max-height:none;opacity:1;">Conception architecturale, permis de construire, plans d'exécution et suivi de chantier architectural pour vos projets d'extension ou de construction neuve.</p>
+          </div>
+          <div style="flex-shrink:0;">
+            <span class="metier-big-card-cta" style="opacity:1;transform:none;">Explorer ce métier →</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="cta-banner-bg" style="background-image: url('https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=1920&q=80');"></div>
+  <div class="cta-banner-overlay"></div>
+  <div class="container">
+    <div class="cta-banner-content reveal">
+      <span class="label">Votre projet</span>
+      <h2>Un seul appel suffit</h2>
+      <p>Dites-nous ce que vous souhaitez réaliser, nous mobilisons les experts qu'il faut, au bon moment.</p>
+      <div class="flex flex-center gap-1" style="flex-wrap:wrap;">
+        <a href="contact.html" class="btn btn-accent">Demander un devis</a>
+        <a href="tel:+41220000000" class="btn btn-outline">+41 22 000 00 00</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand"><div class="header-logo" style="margin-bottom:1rem;"><div class="logo-mark"><svg viewBox="0 0 24 24"><path d="M3 12L12 3l9 9v9H15v-6H9v6H3v-9z"/></svg></div><span class="logo-text">VIDA <span>Habitat</span></span></div><p class="footer-tagline">Votre expert en rénovation de bâtiments en Suisse et en France.</p><div class="footer-socials"><a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a><a href="#" class="social-btn"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/></svg></a><a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a></div></div>
+      <div class="footer-col"><h5>Activités</h5><ul><li><a href="prestations.html#renovation-interieure">Rénovation intérieure</a></li><li><a href="prestations.html#renovation-exterieure">Rénovation extérieure</a></li><li><a href="prestations.html#amenagement">Aménagement intérieur</a></li><li><a href="prestations.html#cle-en-main">Clé en main</a></li><li><a href="prestations.html#remise-en-etat">Remise en état</a></li></ul></div>
+      <div class="footer-col"><h5>Métiers</h5><ul><li><a href="metiers/chauffage-plomberie.html">Chauffage &amp; Plomberie</a></li><li><a href="metiers/sol.html">Revêtements de sol</a></li><li><a href="metiers/electricite.html">Électricité</a></li><li><a href="metiers/peinture.html">Peinture</a></li><li><a href="metiers/maconnerie.html">Maçonnerie</a></li><li><a href="metiers/architecture.html">Architecture</a></li><li><a href="metiers/suivi-chantier.html">Suivi de chantier</a></li></ul></div>
+      <div class="footer-col"><h5>Navigation</h5><ul><li><a href="index.html">Accueil</a></li><li><a href="prestations.html">Prestations</a></li><li><a href="metiers.html">Nos métiers</a></li><li><a href="histoire.html">Notre histoire</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h5>Horaires</h5><div class="hours-row"><span>Lun – Ven</span> 08:00 – 18:00</div><div class="hours-row"><span>Samedi</span> 09:00 – 13:00</div><div class="hours-row"><span>Dimanche</span> Fermé</div><div style="margin-top:1.5rem;"><h5>Contact</h5><p style="font-size:.84rem;color:rgba(255,255,255,0.55);line-height:1.9;">Rue de la Paix 12<br>1201 Genève – Suisse<br><a href="tel:+41220000000" style="color:var(--accent);">+41 22 000 00 00</a><br><a href="mailto:contact@vidahabitat.ch" style="color:var(--accent);">contact@vidahabitat.ch</a></p></div></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2025 VIDA Habitat. Tous droits réservés.</p><p><a href="#">Mentions légales</a> · <a href="#">Politique de confidentialité</a></p></div>
+  </div>
+</footer>
+
+<button class="back-top" aria-label="Retour en haut"><svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg></button>
+<script src="js/main.js"></script>
+</body>
+</html>
