@@ -146,6 +146,15 @@ p { max-width: 68ch; }
   background: var(--accent);
   color: var(--primary);
 }
+.btn-outline-white {
+  border: 2px solid rgba(255,255,255,0.7);
+  color: var(--white);
+}
+.btn-outline-white:hover {
+  background: var(--white);
+  color: var(--primary);
+  border-color: var(--white);
+}
 .btn-dark {
   background: var(--primary);
   color: var(--white);
@@ -1042,6 +1051,7 @@ p { max-width: 68ch; }
 }
 .cta-banner-content h2 { color: var(--white); margin-bottom: 1rem; }
 .cta-banner-content p { color: rgba(255,255,255,0.75); margin: 0 auto 2rem; }
+.cta-banner-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
 /* ─── 19. Why Us ─── */
 .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
@@ -1412,10 +1422,138 @@ p { max-width: 68ch; }
   .metier-features { grid-template-columns: 1fr; }
 }
 
-/* ─── 30. Accessibility ─── */
+/* ─── 30. Histoire page grids ─── */
+.histoire-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+.histoire-grid-center { align-items: center; }
+.histoire-sticky-img { position: sticky; top: 110px; }
+
+/* ─── 31. Architecture – Signature banner ─── */
+.arch-signature-banner {
+  background: linear-gradient(90deg, var(--accent-dark) 0%, var(--accent) 50%, var(--accent-dark) 100%);
+  padding: 1.2rem 0;
+}
+.arch-signature-inner {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.arch-signature-inner p {
+  flex: 1;
+  margin: 0;
+  color: var(--primary);
+  font-size: 0.88rem;
+  font-weight: 600;
+  max-width: 100%;
+}
+.arch-signature-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--primary);
+  color: var(--accent);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.arch-signature-badge svg { width: 14px; height: 14px; stroke: var(--accent); }
+
+/* ─── 32. Architecture – Plan viewer ─── */
+.plan-block { background: var(--white); border-radius: var(--radius-lg); padding: 2.5rem; box-shadow: var(--shadow); }
+.plan-block-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+.plan-block-header h3 { font-size: 1.4rem; margin-bottom: 0; }
+.plan-svg-box {
+  background: #F7F5F0;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 1.2rem;
+  max-height: 560px;
+}
+.plan-note {
+  font-size: 0.82rem;
+  color: var(--text-light);
+  font-style: italic;
+  border-left: 3px solid var(--accent);
+  padding-left: 1rem;
+  margin-top: 1rem;
+  max-width: 100%;
+}
+
+/* ─── 33. Service card – Featured variant ─── */
+.service-card-featured {
+  border: 3px solid var(--accent);
+  box-shadow: 0 0 0 0 rgba(201,165,90,0);
+  transition: var(--transition), box-shadow 0.4s;
+}
+.service-card-featured:hover {
+  box-shadow: 0 8px 32px rgba(201,165,90,0.35);
+}
+.service-card-featured-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--accent);
+  color: var(--primary);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.75rem;
+  border-radius: 50px;
+}
+
+/* ─── 34. Gallery item as link ─── */
+a.gallery-item { display: block; }
+
+/* ─── 35. Accessibility ─── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
 
-/* ─── 31. Selection ─── */
+/* ─── 36. Responsive – Histoire grids ─── */
+@media (max-width: 1024px) {
+  .histoire-grid { gap: 3rem; }
+}
+@media (max-width: 900px) {
+  .histoire-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .histoire-sticky-img { position: static; }
+  .arch-signature-inner { gap: 1rem; }
+  .arch-signature-inner p { font-size: 0.82rem; }
+  .plan-block { padding: 1.5rem; }
+}
+@media (max-width: 640px) {
+  .arch-signature-inner { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+  .plan-block-header { flex-direction: column; }
+  .plan-svg-box { max-height: 320px; }
+  .arch-signature-banner .btn { width: 100%; text-align: center; justify-content: center; }
+}
+
+/* ─── 38. Selection ─── */
 ::selection { background: var(--accent); color: var(--primary); }
