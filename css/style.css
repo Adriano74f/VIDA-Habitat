@@ -351,42 +351,66 @@ p { max-width: 68ch; }
 .mobile-menu {
   position: fixed;
   inset: 0;
+  height: 100vh;
+  height: 100dvh;
   background: #FFFEF9;
   z-index: 999;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
+  padding: calc(var(--header-h) + 0.5rem) 1.5rem 2rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.35s;
 }
 .mobile-menu.open { opacity: 1; pointer-events: all; }
-.mobile-menu a {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
+.mobile-menu > a {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--text);
-  padding: 0.5rem 2rem;
-  transition: var(--transition);
+  padding: 0.95rem 0;
+  border-bottom: 1px solid var(--border);
+  transition: color 0.2s;
 }
-.mobile-menu a:hover { color: var(--accent); }
-.mobile-submenu { display: flex; flex-direction: column; align-items: center; margin-top: 0.5rem; gap: 0.3rem; }
+.mobile-menu a:hover,
+.mobile-menu a.active { color: var(--accent); }
+.mobile-submenu {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.2rem 1rem;
+  padding: 0.6rem 0 0.8rem 0.9rem;
+  border-bottom: 1px solid var(--border);
+  border-left: 2px solid var(--accent);
+  margin-top: -1px;
+}
 .mobile-submenu a {
   font-family: 'Montserrat', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  line-height: 1.35;
   color: var(--text-mid);
+  padding: 0.45rem 0;
+  transition: color 0.2s;
 }
-.mobile-submenu a:hover { color: var(--accent); }
 .mobile-menu-phone {
-  margin-top: 2rem;
+  margin-top: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1rem;
+  background: var(--accent);
+  color: var(--primary);
+  border-radius: var(--radius);
   font-family: 'Montserrat', sans-serif;
   font-size: 0.85rem;
-  color: var(--accent);
-  letter-spacing: 0.1em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
 }
 
 /* ─── 7. Hero Sections ─── */
@@ -1583,16 +1607,7 @@ a.gallery-item { display: block; }
 .site-header:has(.burger.open) .burger span { background: var(--text); }
 
 @media (max-width: 900px) {
-  .mobile-menu {
-    justify-content: flex-start;
-    padding: calc(var(--header-h) + 1.5rem) 1.5rem 2.5rem;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  .mobile-menu > a:first-child { margin-top: auto; }
-  .mobile-menu-phone { margin-bottom: auto; }
-  .mobile-menu a { font-size: 1.6rem; text-align: center; }
-  .mobile-submenu a { font-size: 0.8rem; padding: 0.35rem 1rem; }
+  .burger { margin-left: auto; }
 
   .page-hero { height: auto; min-height: 420px; padding-top: var(--header-h); }
   .split-img { height: 320px; }
@@ -1711,7 +1726,6 @@ a.gallery-item { display: block; }
 @media (max-height: 500px) and (orientation: landscape) {
   .hero { min-height: 560px; }
   .hero-scroll { display: none; }
-  .mobile-menu { justify-content: flex-start; }
 }
 
 /* Écrans tactiles : pas de survol, les infos des cartes sont affichées d'office */
