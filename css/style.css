@@ -27,7 +27,8 @@
 
 /* ─── 2. Reset & Base ─── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
+html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+@supports (overflow: clip) { html, body { overflow-x: clip; } }
 body {
   font-family: 'Open Sans', sans-serif;
   color: var(--text);
@@ -45,10 +46,12 @@ h1, h2, h3, h4, h5 {
   font-family: 'Playfair Display', serif;
   line-height: 1.2;
   font-weight: 700;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
-h1 { font-size: clamp(2.4rem, 6vw, 4.5rem); }
-h2 { font-size: clamp(1.8rem, 4vw, 3rem); }
-h3 { font-size: clamp(1.3rem, 2.5vw, 1.9rem); }
+h1 { font-size: clamp(2rem, 6vw, 4.5rem); }
+h2 { font-size: clamp(1.6rem, 4vw, 3rem); }
+h3 { font-size: clamp(1.25rem, 2.5vw, 1.9rem); }
 h4 { font-size: 1.2rem; }
 p { max-width: 68ch; }
 
@@ -390,6 +393,7 @@ p { max-width: 68ch; }
 .hero {
   position: relative;
   min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -1064,6 +1068,7 @@ p { max-width: 68ch; }
 .cta-banner-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
 /* ─── 19. Why Us ─── */
+.why-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
 .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
 .why-card {
   background: rgba(255,255,255,0.04);
@@ -1186,6 +1191,7 @@ p { max-width: 68ch; }
   gap: 5rem;
   align-items: center;
 }
+.metier-intro-grid h2 { margin: 0.8rem 0 1.2rem; }
 .metier-features { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0; }
 .metier-feature {
   background: var(--light);
@@ -1379,8 +1385,13 @@ p { max-width: 68ch; }
 
 @media (max-width: 1024px) {
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
-  .stats-grid .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
-  .process-track { flex-wrap: wrap; }
+  .stats-grid .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
+  .stats-grid .stat-item:nth-child(odd) { border-right: 1px solid var(--border); }
+  .stats-grid .stat-item:nth-last-child(-n+2) { border-bottom: none; }
+  .why-layout { grid-template-columns: 1fr; gap: 3rem; }
+  .map-info { padding: 4rem 2.5rem; }
+  .site-header { padding: 0 1.5rem; }
+  .process-track { flex-wrap: wrap; justify-content: center; row-gap: 2.5rem; }
   .process-track::before { display: none; }
   .process-step { flex: 0 0 calc(33.33% - 1rem); }
   .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1564,6 +1575,152 @@ a.gallery-item { display: block; }
   .plan-block-header { flex-direction: column; }
   .plan-svg-box { max-height: 320px; }
   .arch-signature-banner .btn { width: 100%; text-align: center; justify-content: center; }
+}
+
+/* ─── 37. Responsive – Mobile & tactile ─── */
+/* Menu mobile ouvert : header lisible sur le fond clair du menu */
+.site-header:has(.burger.open) .logo-text { color: var(--text); }
+.site-header:has(.burger.open) .burger span { background: var(--text); }
+
+@media (max-width: 900px) {
+  .mobile-menu {
+    justify-content: flex-start;
+    padding: calc(var(--header-h) + 1.5rem) 1.5rem 2.5rem;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .mobile-menu > a:first-child { margin-top: auto; }
+  .mobile-menu-phone { margin-bottom: auto; }
+  .mobile-menu a { font-size: 1.6rem; text-align: center; }
+  .mobile-submenu a { font-size: 0.8rem; padding: 0.35rem 1rem; }
+
+  .page-hero { height: auto; min-height: 420px; padding-top: var(--header-h); }
+  .split-img { height: 320px; }
+  .gallery-grid { grid-template-rows: repeat(2, 220px); }
+}
+
+@media (max-width: 640px) {
+  .site-header { padding: 0 1.2rem; }
+  .logo-mark { width: 36px; height: 36px; }
+  .logo-text { font-size: 1.25rem; }
+
+  .section-header { margin-bottom: 40px; }
+  .section-sm { padding: 48px 0; }
+
+  /* Hero */
+  .hero-content { padding-top: calc(var(--header-h) + 2rem); padding-bottom: 3.5rem; }
+  .hero-content p { font-size: 1rem; margin-bottom: 2rem; }
+  .hero-scroll { display: none; }
+  .page-hero { min-height: 340px; }
+  .page-hero-content { padding-bottom: 2.5rem; }
+  .breadcrumb { flex-wrap: wrap; }
+
+  /* Boutons : pleine largeur, texte centré et autorisé à passer à la ligne */
+  .btn { padding: 0.85rem 1.5rem; justify-content: center; text-align: center; white-space: normal; }
+  .cta-banner-content .btn,
+  .cta-banner-actions .btn,
+  .split-content .btn,
+  .prestation-text .btn { width: 100%; }
+  .cta-banner { padding: 70px 0; }
+
+  /* Stats */
+  .stat-item { padding: 2rem 0.8rem; }
+  .stat-label { font-size: 0.65rem; letter-spacing: 0.08em; }
+
+  /* Label : le trait décoratif ne doit pas faire déborder le texte */
+  .label { letter-spacing: 0.14em; }
+  .label::before { width: 20px; margin-right: 8px; }
+
+  /* Process : une étape par ligne, alignée à gauche avec son numéro */
+  .process-track { flex-direction: column; gap: 1.8rem; margin-top: 2rem !important; }
+  .process-step { flex: none; width: 100%; display: grid; grid-template-columns: 56px 1fr; column-gap: 1.2rem; text-align: left; }
+  .process-step-num { width: 56px; height: 56px; font-size: 1.1rem; margin: 0; grid-row: span 2; }
+  .process-step h4 { margin: 0.3rem 0 0.3rem; }
+
+  /* Split / intro */
+  .split-section { min-height: 0; }
+  .split-img { height: 240px; }
+
+  /* Cartes services : moins hautes, contenu toujours visible */
+  .service-card { aspect-ratio: 4/3; }
+  .service-card-content { padding: 1.5rem 1.4rem; }
+
+  /* Why us */
+  .why-card { padding: 1.4rem; gap: 1rem; }
+
+  /* Galerie */
+  .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 210px; grid-auto-rows: 150px; gap: 0.6rem; }
+  .gallery-item:first-child { grid-column: span 2; grid-row: auto; }
+
+  /* Carte / zones */
+  .map-info { padding: 3rem 1.2rem; }
+  .map-embed iframe { min-height: 300px; height: 300px; }
+
+  /* Témoignages */
+  .testimonial-card { padding: 1.6rem; }
+  .testimonial-card::before { font-size: 3.5rem; right: 1.2rem; }
+
+  /* Prestations */
+  .prestation-section { padding: 56px 0; }
+  .prestation-img::after { transform: translate(6px, 6px); }
+  .prestation-photos { gap: 0.5rem; }
+
+  /* Métiers */
+  .metier-gallery { gap: 0.6rem; }
+  .metier-feature { padding: 1rem; }
+
+  /* Histoire : frise */
+  .timeline { padding-left: 2.4rem; }
+  .timeline::before { left: 15px; }
+  .timeline-dot { left: -2.4rem; width: 34px; height: 34px; border-width: 3px; }
+  .timeline-dot svg { width: 14px; height: 14px; }
+  .timeline-item { padding-bottom: 2.2rem; }
+  .valeur-card { padding: 2rem 1.4rem; }
+
+  /* Contact */
+  .contact-grid { gap: 2.5rem; }
+  .form-card { padding: 1.6rem 1.2rem; }
+  /* 16px minimum : évite le zoom automatique d'iOS sur les champs */
+  .form-group input, .form-group select, .form-group textarea { font-size: 16px; }
+
+  /* Footer */
+  .site-footer { padding-top: 56px; }
+  .footer-top { gap: 2rem; padding-bottom: 40px; }
+  .footer-col .hours-row { gap: 1rem; }
+
+  /* Boutons flottants */
+  .back-top { bottom: 1.2rem; right: 1.2rem; width: 44px; height: 44px; }
+  .toast { left: 1rem; right: 1rem; bottom: 1rem; transform: translateY(150%); }
+  .toast.show { transform: translateY(0); }
+
+  /* Animations latérales : éviter tout débordement horizontal */
+  .reveal.from-left, .reveal.from-right { transform: translateY(30px); }
+  .reveal.visible { transform: none; }
+}
+
+@media (max-width: 380px) {
+  .container { padding: 0 1rem; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .stat-number { font-size: 2rem; }
+  .prestation-photos { grid-template-columns: 1fr 1fr; }
+  .metier-gallery { grid-template-columns: 1fr; }
+  .metier-gallery-item:first-child { grid-column: span 1; }
+}
+
+/* Paysage sur téléphone : hero moins haut */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero { min-height: 560px; }
+  .hero-scroll { display: none; }
+  .mobile-menu { justify-content: flex-start; }
+}
+
+/* Écrans tactiles : pas de survol, les infos des cartes sont affichées d'office */
+@media (hover: none) {
+  .service-card-desc { max-height: none; opacity: 1; }
+  .service-card-link { opacity: 1; transform: none; }
+  .service-card-overlay { background: linear-gradient(to top, rgba(25,18,8,0.92) 0%, rgba(25,18,8,0.3) 70%); }
+  .gallery-item-overlay { display: none; }
+  .card:hover, .valeur-card:hover, .testimonial-card:hover { transform: none; }
 }
 
 /* ─── 38. Selection ─── */
