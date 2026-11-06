@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initDropdown();
   initParallax();
+  initHero3D();
   initReveal();
   initCounters();
   initProcess();
@@ -615,6 +616,242 @@ function initForm() {
       setLoading(false);
     }
   });
+}
+
+/* ─── Hero : maison « plan d'architecte » en 3D (WebGL natif, sans librairie) ───
+   Uniquement sur grand écran avec souris, appareil suffisamment puissant,
+   sans « mouvement réduit » ni économiseur de données. Dans tous les autres cas
+   (ou si WebGL est indisponible) le hero photo reste tel quel. */
+function initHero3D() {
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+
+  const desktop = window.matchMedia('(min-width: 1200px) and (hover: hover) and (pointer: fine)');
+  const capable = () =>
+    !prefersReducedMotion() && desktop.matches &&
+    !(navigator.connection && navigator.connection.saveData) &&
+    !(navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) &&
+    !(navigator.deviceMemory && navigator.deviceMemory < 4);
+  if (!capable()) return;
+
+  const canvas = document.createElement('canvas');
+  canvas.className = 'hero-3d';
+  canvas.setAttribute('aria-hidden', 'true');
+  let gl = null;
+  try {
+    gl = canvas.getContext('webgl', { antialias: true, alpha: true, premultipliedAlpha: true, failIfMajorPerformanceCaveat: true, powerPreference: 'low-power' });
+  } catch (e) { gl = null; }
+  if (!gl) return;
+
+  /* Géométrie : segments [x1,y1,z1, x2,y2,z2, type, départ(s)]
+     type 0 = structure, 1 = grille au sol, 2 = détails et cotes */
+  const segs = [];
+  const seg = (a, b, kind, delay) => segs.push([...a, ...b, kind, delay]);
+  const path = (pts, kind, start, step) => pts.slice(1).forEach((p, i) => seg(pts[i], p, kind, start + i * step));
+
+  for (let i = -5; i <= 5; i++) {
+    seg([i, 0, -5], [i, 0, 5], 1, 0.05 * (i + 5));
+    seg([-5, 0, i], [5, 0, i], 1, 0.05 * (i + 5) + 0.1);
+  }
+  const W = 2, D = 1.5, H = 2, R = 3.1;
+  path([[-W, 0, D], [W, 0, D], [W, 0, -D], [-W, 0, -D], [-W, 0, D]], 0, 0.5, 0.12);
+  [[-W, D], [W, D], [W, -D], [-W, -D]].forEach(([x, z], i) => seg([x, 0, z], [x, H, z], 0, 0.95 + i * 0.06));
+  path([[-W, H, D], [W, H, D], [W, H, -D], [-W, H, -D], [-W, H, D]], 0, 1.25, 0.1);
+  [-W, W].forEach((x, i) => path([[x, H, D], [x, R, 0], [x, H, -D]], 0, 1.6 + i * 0.12, 0.12));
+  seg([-W, R, 0], [W, R, 0], 0, 1.9);
+  [-1, 0, 1].forEach((x, i) => path([[x, H, D], [x, R, 0], [x, H, -D]], 2, 2.0 + i * 0.07, 0.1));
+  path([[0.4, 0, D], [0.4, 1.45, D], [1.1, 1.45, D], [1.1, 0, D]], 0, 2.2, 0.1);
+  path([[-1.5, 0.8, D], [-0.5, 0.8, D], [-0.5, 1.6, D], [-1.5, 1.6, D], [-1.5, 0.8, D]], 0, 2.3, 0.07);
+  seg([-1, 0.8, D], [-1, 1.6, D], 2, 2.6);
+  seg([-1.5, 1.2, D], [-0.5, 1.2, D], 2, 2.62);
+  path([[W, 0.8, 0.6], [W, 0.8, -0.6], [W, 1.6, -0.6], [W, 1.6, 0.6], [W, 0.8, 0.6]], 0, 2.45, 0.07);
+  const roofY = z => R - ((R - H) / D) * Math.abs(z);
+  [[0.9, -0.55], [1.3, -0.55], [1.3, -0.95], [0.9, -0.95]].forEach(([x, z], i) => seg([x, roofY(z), z], [x, 3.55, z], 0, 2.6 + i * 0.05));
+  path([[0.9, 3.55, -0.55], [1.3, 3.55, -0.55], [1.3, 3.55, -0.95], [0.9, 3.55, -0.95], [0.9, 3.55, -0.55]], 0, 2.8, 0.05);
+  // Cotes (largeur au sol, hauteur des murs)
+  seg([-W, 0, D + 0.1], [-W, 0, D + 0.9], 2, 2.75);
+  seg([W, 0, D + 0.1], [W, 0, D + 0.9], 2, 2.75);
+  seg([-W, 0, D + 0.7], [W, 0, D + 0.7], 2, 2.85);
+  seg([-W - 0.12, 0, D + 0.82], [-W + 0.12, 0, D + 0.58], 2, 3.1);
+  seg([W - 0.12, 0, D + 0.82], [W + 0.12, 0, D + 0.58], 2, 3.1);
+  seg([W + 0.1, 0, D], [W + 0.9, 0, D], 2, 2.9);
+  seg([W + 0.1, H, D], [W + 0.9, H, D], 2, 2.9);
+  seg([W + 0.7, 0, D], [W + 0.7, H, D], 2, 3.0);
+  seg([W + 0.58, -0.12, D], [W + 0.82, 0.12, D], 2, 3.2);
+  seg([W + 0.58, H - 0.12, D], [W + 0.82, H + 0.12, D], 2, 3.2);
+
+  // Repères aux angles (points), qui apparaissent une fois le dessin terminé
+  const nodes = [[-W, 0, D], [W, 0, D], [W, 0, -D], [-W, 0, -D], [-W, H, D], [W, H, D], [W, H, -D], [-W, H, -D], [-W, R, 0], [W, R, 0]];
+
+  // Sommets : position(3), avancée le long du segment(1), départ(1), type(1)
+  const lineData = new Float32Array(segs.length * 12);
+  segs.forEach((s, i) => {
+    lineData.set([s[0], s[1], s[2], 0, s[7], s[6], s[3], s[4], s[5], 1, s[7], s[6]], i * 12);
+  });
+  const pointData = new Float32Array(nodes.length * 6);
+  nodes.forEach((n, i) => pointData.set([...n, 0, 3.3 + i * 0.04, 3], i * 6));
+
+  const VS = `
+    attribute vec3 aPos; attribute float aAlong; attribute float aDelay; attribute float aKind;
+    uniform mat4 uMVP; uniform float uTime; uniform float uPx;
+    varying float vAlong; varying float vLocal; varying float vKind; varying float vDepth; varying vec2 vXZ;
+    void main() {
+      vec4 p = uMVP * vec4(aPos, 1.0);
+      gl_Position = p;
+      vAlong = aAlong; vKind = aKind; vDepth = p.w; vXZ = aPos.xz;
+      vLocal = clamp((uTime - aDelay) / 0.55, 0.0, 1.0);
+      gl_PointSize = uPx * 5.0;
+    }`;
+  const FS = `
+    precision mediump float;
+    uniform vec3 uColor; uniform vec2 uDepth;
+    varying float vAlong; varying float vLocal; varying float vKind; varying float vDepth; varying vec2 vXZ;
+    void main() {
+      float a;
+      if (vKind > 2.5) {
+        a = vLocal;
+      } else {
+        if (vAlong > vLocal) discard;
+        a = vKind < 0.5 ? 0.95 : (vKind < 1.5 ? 0.16 : 0.55);
+        if (vKind > 0.5 && vKind < 1.5) a *= 1.0 - smoothstep(2.5, 5.0, length(vXZ));
+      }
+      a *= mix(1.0, 0.4, clamp((vDepth - uDepth.x) / (uDepth.y - uDepth.x), 0.0, 1.0));
+      gl_FragColor = vec4(uColor * a, a);
+    }`;
+
+  const compile = (type, src) => {
+    const sh = gl.createShader(type);
+    gl.shaderSource(sh, src);
+    gl.compileShader(sh);
+    return gl.getShaderParameter(sh, gl.COMPILE_STATUS) ? sh : null;
+  };
+  const vs = compile(gl.VERTEX_SHADER, VS), fs = compile(gl.FRAGMENT_SHADER, FS);
+  if (!vs || !fs) return;
+  const prog = gl.createProgram();
+  gl.attachShader(prog, vs);
+  gl.attachShader(prog, fs);
+  gl.linkProgram(prog);
+  if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return;
+  gl.useProgram(prog);
+
+  const loc = name => gl.getAttribLocation(prog, name);
+  const uni = name => gl.getUniformLocation(prog, name);
+  const attrs = [['aPos', 3], ['aAlong', 1], ['aDelay', 1], ['aKind', 1]].map(([n, size]) => ({ l: loc(n), size }));
+  const makeBuffer = data => { const b = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, b); gl.bufferData(gl.ARRAY_BUFFER, data, gl.STATIC_DRAW); return b; };
+  const lineBuf = makeBuffer(lineData), pointBuf = makeBuffer(pointData);
+  const bind = buf => {
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    let off = 0;
+    attrs.forEach(a => { gl.enableVertexAttribArray(a.l); gl.vertexAttribPointer(a.l, a.size, gl.FLOAT, false, 24, off); off += a.size * 4; });
+  };
+  const uMVP = uni('uMVP'), uTime = uni('uTime'), uPx = uni('uPx'), uColor = uni('uColor'), uDepth = uni('uDepth');
+  gl.uniform3f(uColor, 201 / 255, 165 / 255, 90 / 255); // --accent
+  gl.enable(gl.BLEND);
+  gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+
+  /* Matrices (ordre colonne, comme WebGL) */
+  const perspective = (fovy, aspect, near, far) => {
+    const f = 1 / Math.tan(fovy / 2), nf = 1 / (near - far);
+    return [f / aspect, 0, 0, 0, 0, f, 0, 0, 0, 0, (far + near) * nf, -1, 0, 0, 2 * far * near * nf, 0];
+  };
+  const lookAt = (e, t) => {
+    const sub = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
+    const norm = v => { const l = Math.hypot(...v); return v.map(x => x / l); };
+    const cross = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+    const dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+    const z = norm(sub(e, t)), x = norm(cross([0, 1, 0], z)), y = cross(z, x);
+    return [x[0], y[0], z[0], 0, x[1], y[1], z[1], 0, x[2], y[2], z[2], 0, -dot(x, e), -dot(y, e), -dot(z, e), 1];
+  };
+  const mul = (a, b) => {
+    const o = new Array(16);
+    for (let c = 0; c < 4; c++) for (let r = 0; r < 4; r++) {
+      o[c * 4 + r] = a[r] * b[c * 4] + a[4 + r] * b[c * 4 + 1] + a[8 + r] * b[c * 4 + 2] + a[12 + r] * b[c * 4 + 3];
+    }
+    return o;
+  };
+
+  hero.insertBefore(canvas, hero.querySelector('.container'));
+  hero.classList.add('has-3d');
+
+  let dpr = 1;
+  const resize = () => {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const w = Math.round(canvas.clientWidth * dpr), h = Math.round(canvas.clientHeight * dpr);
+    if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
+    gl.viewport(0, 0, canvas.width, canvas.height);
+  };
+
+  // Souris : légère rotation (lissée)
+  const mouse = { x: 0, y: 0, tx: 0, ty: 0 };
+  const onMove = e => { mouse.tx = e.clientX / window.innerWidth - 0.5; mouse.ty = e.clientY / window.innerHeight - 0.5; };
+  window.addEventListener('pointermove', onMove, { passive: true });
+
+  let t0 = 0, raf = 0, visible = true, running = false;
+  const render = now => {
+    if (!t0) t0 = now;
+    const t = (now - t0) / 1000;
+    mouse.x += (mouse.tx - mouse.x) * 0.05;
+    mouse.y += (mouse.ty - mouse.y) * 0.05;
+    const rect = hero.getBoundingClientRect();
+    const scrolled = Math.min(Math.max(-rect.top / rect.height, 0), 1);
+
+    const yaw = 0.62 + Math.sin(t * 0.18) * 0.18 + mouse.x * 0.45 + scrolled * 0.5;
+    const pitch = 0.36 + mouse.y * 0.12 + scrolled * 0.25;
+    // Toile plus étroite (écrans moyens) : on recule la caméra pour garder la maison entière
+    const dist = 17.5 * Math.max(1, 0.8 / (canvas.width / canvas.height));
+    const target = [0.35, 1.45, 0];
+    const eye = [target[0] + dist * Math.cos(pitch) * Math.sin(yaw), target[1] + dist * Math.sin(pitch), target[2] + dist * Math.cos(pitch) * Math.cos(yaw)];
+    const mvp = mul(perspective(0.5, canvas.width / canvas.height, 1, 60), lookAt(eye, target));
+
+    gl.clearColor(0, 0, 0, 0);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.uniformMatrix4fv(uMVP, false, new Float32Array(mvp));
+    gl.uniform1f(uTime, t);
+    gl.uniform1f(uPx, dpr);
+    gl.uniform2f(uDepth, dist - 5, dist + 5);
+    bind(lineBuf);
+    gl.drawArrays(gl.LINES, 0, segs.length * 2);
+    bind(pointBuf);
+    gl.drawArrays(gl.POINTS, 0, nodes.length);
+  };
+  const frame = now => {
+    raf = 0;
+    if (!running) return;
+    render(now);
+    raf = requestAnimationFrame(frame);
+  };
+  const update = () => {
+    const should = visible && !document.hidden && capable();
+    if (should && !running) { running = true; resize(); raf = requestAnimationFrame(frame); }
+    if (!should && running) { running = false; cancelAnimationFrame(raf); raf = 0; }
+  };
+
+  const io = new IntersectionObserver(entries => { visible = entries[0].isIntersecting; update(); });
+  io.observe(hero);
+  document.addEventListener('visibilitychange', update);
+  desktop.addEventListener('change', update);
+  window.addEventListener('resize', () => { if (running) resize(); }, { passive: true });
+
+  // Mouvement réduit activé en cours de route : on retire tout
+  const teardown = () => {
+    running = false;
+    cancelAnimationFrame(raf);
+    io.disconnect();
+    window.removeEventListener('pointermove', onMove);
+    hero.classList.remove('has-3d');
+    canvas.remove();
+  };
+  reducedMotionQuery.addEventListener('change', () => { if (prefersReducedMotion()) teardown(); });
+  canvas.addEventListener('webglcontextlost', e => { e.preventDefault(); teardown(); });
+
+  // Démarrage après le chargement de la page (ne retarde pas l'affichage du hero)
+  const start = () => setTimeout(() => {
+    if (!canvas.isConnected) return;
+    update();
+    canvas.classList.add('is-ready');
+  }, 350);
+  if (document.readyState === 'complete') start();
+  else window.addEventListener('load', start, { once: true });
 }
 
 /* ─── Réalisations : filtres de la galerie ───

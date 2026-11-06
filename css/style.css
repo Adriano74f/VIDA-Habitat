@@ -2604,3 +2604,57 @@ html.lightbox-open { overflow: hidden; }
   .works-card-zoom { opacity: 1; transform: none; width: 34px; height: 34px; top: 0.6rem; right: 0.6rem; }
   .works-card-zoom svg { width: 16px; height: 16px; }
 }
+
+/* ─── 40. Hero d'accueil : titre révélé ligne à ligne + plan 3D ─── */
+.hero-title .line {
+  display: block;
+  overflow: hidden;
+  /* marge pour les jambages et l'italique, sans changer l'interlignage */
+  padding: 0 0.12em 0.12em 0;
+  margin-bottom: -0.12em;
+}
+.hero-title .line > span { display: inline-block; }
+.hero-title em { position: relative; }
+.hero-title em::after {
+  content: '';
+  position: absolute;
+  left: 0.04em;
+  right: 0.02em;
+  bottom: 0.02em;
+  height: 0.045em;
+  min-height: 2px;
+  background: var(--accent);
+  transform-origin: left;
+}
+@keyframes line-up { from { transform: translate3d(0, 108%, 0); } }
+@keyframes underline-in { from { transform: scaleX(0); } }
+.js .hero-content > .hero-title { animation: none; }
+.js .hero-title .line > span { animation: line-up 1.25s var(--ease-out) backwards; }
+.js .hero-title .line:nth-child(1) > span { animation-delay: 0.25s; }
+.js .hero-title .line:nth-child(2) > span { animation-delay: 0.4s; }
+.js .hero-title em::after { animation: underline-in 1s 1.3s var(--ease-out) backwards; }
+
+/* Plan 3D (créé par JavaScript sur grand écran uniquement) */
+.hero-3d {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: min(50%, calc(100% - 700px)); /* ne passe jamais sous le titre */
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.4s var(--ease-out);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 18%);
+  mask-image: linear-gradient(to right, transparent, #000 18%);
+}
+.hero-3d.is-ready { opacity: 1; }
+.hero.has-3d .hero-overlay {
+  background: linear-gradient(100deg, rgba(25,18,8,0.84) 0%, rgba(25,18,8,0.7) 50%, rgba(25,18,8,0.8) 100%);
+}
+@media (max-width: 1199px) {
+  .hero-3d { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .hero-title .line > span, .js .hero-title em::after { animation: none !important; }
+  .hero-3d { display: none; }
+}
