@@ -502,9 +502,13 @@ main:focus { outline: none; }
 }
 .hero-bg {
   position: absolute;
-  inset: -30%;
-  background-size: cover;
-  background-position: center;
+  top: -30%;
+  left: 0;
+  width: 100%;
+  max-width: none;
+  height: 160%;
+  object-fit: cover;
+  object-position: center;
   will-change: transform;
 }
 .hero-overlay {
@@ -566,9 +570,13 @@ main:focus { outline: none; }
 }
 .page-hero-bg {
   position: absolute;
-  inset: -20%;
-  background-size: cover;
-  background-position: center;
+  top: -20%;
+  left: 0;
+  width: 100%;
+  max-width: none;
+  height: 140%;
+  object-fit: cover;
+  object-position: center;
   will-change: transform;
 }
 .page-hero-overlay {
@@ -704,8 +712,10 @@ main:focus { outline: none; }
   position: absolute;
   inset: 0;
   z-index: -2;
-  background-size: cover;
-  background-position: center;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
   transform: scale(1.02);
   filter: saturate(0.85);
   transition: transform 1.4s var(--ease-out), filter 0.8s var(--ease-out);
@@ -1115,8 +1125,42 @@ main:focus { outline: none; }
 }
 .map-embed {
   position: relative;
+  min-height: 400px;
 }
-.map-embed iframe {
+
+/* Carte Google Maps chargée au clic (pas de cookies Google avant l'accord du visiteur) */
+.map-facade {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #EAE3D6;
+  background-image:
+    radial-gradient(circle at 50% 46%, rgba(201,165,90,0.28) 0, rgba(201,165,90,0) 34%),
+    repeating-linear-gradient(28deg, transparent 0 46px, rgba(42,31,14,0.06) 46px 47px),
+    repeating-linear-gradient(-62deg, transparent 0 70px, rgba(42,31,14,0.05) 70px 71px),
+    linear-gradient(160deg, #EFE9DE, #E2D8C6);
+  overflow: hidden;
+}
+.map-facade iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; filter: saturate(0.8) contrast(0.92); }
+.map-facade-inner { position: relative; text-align: center; padding: 2rem 1.5rem; max-width: 34ch; }
+.map-facade-pin {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 56px; height: 56px; margin-bottom: 0.9rem;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 0 8px rgba(42,31,14,0.08), 0 10px 24px -8px rgba(42,31,14,0.5);
+}
+.map-facade-pin svg { width: 26px; height: 26px; fill: var(--accent); }
+.map-facade-title { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 600; color: var(--text); margin: 0 auto 0.4rem; }
+.map-facade-note { font-size: 0.82rem; color: var(--text-mid); margin: 0 auto 1.1rem; }
+.map-facade.is-loaded .map-facade-inner { display: none; }
+.map-facade.is-loaded { background: var(--light); }
+.contact-map { margin-top: 2rem; height: 280px; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow); }
+.map-embed iframe, .map-embed .map-facade {
   width: 100%;
   height: 100%;
   min-height: 400px;
@@ -1334,9 +1378,13 @@ main:focus { outline: none; }
 }
 .cta-banner-bg {
   position: absolute;
-  inset: -20%;
-  background-size: cover;
-  background-position: center;
+  top: -20%;
+  left: 0;
+  width: 100%;
+  max-width: none;
+  height: 140%;
+  object-fit: cover;
+  object-position: center;
   will-change: transform;
 }
 .cta-banner-overlay {
@@ -1724,6 +1772,7 @@ html.lenis, html.lenis body { height: auto; }
   .split-section { grid-template-columns: 1fr; }
   .split-img { height: 400px; }
   .map-section { grid-template-columns: 1fr; }
+  .map-embed { min-height: 350px; }
   .map-embed iframe { height: 350px; }
   .metier-intro-grid { grid-template-columns: 1fr; gap: 3rem; }
 }
@@ -2081,6 +2130,7 @@ a.gallery-item { display: block; }
 
   /* Carte / zones */
   .map-info { padding: 3rem 1.2rem; }
+  .map-embed { min-height: 300px; }
   .map-embed iframe { min-height: 300px; height: 300px; }
 
   /* Témoignages */

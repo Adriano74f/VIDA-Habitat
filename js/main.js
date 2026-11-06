@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCardTilt();
   initMobileCta();
   initBackTop();
+  initMaps();
   initForm();
   initAnchors();
   setActiveNav();
@@ -405,6 +406,34 @@ function initMobileCta() {
 
   scrolled = window.scrollY > 240;
   render();
+}
+
+/* ─── Cartes Google Maps chargées au clic ───
+   Aucune requête vers Google (ni cookie) tant que le visiteur n'a pas
+   cliqué. Son choix est retenu pour les pages suivantes. */
+function initMaps() {
+  const facades = document.querySelectorAll('.map-facade');
+  if (!facades.length) return;
+  const KEY = 'vida-maps-ok';
+
+  const load = (facade, focus) => {
+    const tpl = facade.querySelector('template');
+    if (!tpl || facade.classList.contains('is-loaded')) return;
+    facade.appendChild(tpl.content.cloneNode(true));
+    facade.classList.add('is-loaded');
+    if (focus) facade.querySelector('iframe')?.focus();
+  };
+
+  let accepted = false;
+  try { accepted = localStorage.getItem(KEY) === '1'; } catch { /* stockage indisponible */ }
+
+  facades.forEach(facade => {
+    if (accepted) { load(facade, false); return; }
+    facade.querySelector('.map-facade-btn')?.addEventListener('click', () => {
+      try { localStorage.setItem(KEY, '1'); } catch { /* stockage indisponible */ }
+      load(facade, true);
+    });
+  });
 }
 
 /* ─── Back to top ─── */

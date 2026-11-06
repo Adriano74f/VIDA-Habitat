@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- PLACEHOLDER : adresse du site à adapter si un nom de domaine est acheté -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://adriano74f.github.io/VIDA-Habitat/</loc><lastmod>2026-11-06</lastmod><priority>1.0</priority></url>
+  <url><loc>https://adriano74f.github.io/VIDA-Habitat/prestations.html</loc><lastmod>2026-11-06</lastmod><priority>0.8</priority></url>
+  <url><loc>https://adriano74f.github.io/VIDA-Habitat/metiers.html</loc><lastmod>2026-11-06</lastmod><priority>0.8</priority></url>
+  <url><loc>https://adriano74f.github.io/VIDA-Habitat/histoire.html</loc><lastmod>2026-11-06</lastmod><priority>0.8</priority></url>
+  <url><loc>https://adriano74f.github.io/VIDA-Habitat/contact.html</loc><lastmod>2026-11-06</lastmod><priority>0.8</priority></url>
+  <url><loc>https://adriano74f.github.io/VIDA-Habitat/metiers/chauffage-plomberie.html</loc><lastmod>2026-11-06</lastmod><priority>0.8</priority></url>
+  <url><loc>https://adriano74f.github.io/VIDA-Habitat/metiers/sol.html</loc><lastmod>2026-11-06</lastmod><priority>0.8</priority></url>
+  <url><loc>https://adriano74f.github.io/VIDA-Habitat/metiers/electricite.html</loc><lastmod>2026-11-06</lastmod><priority>0.8</priority></url>
+  <url><loc>https://adriano74f.github.io/VIDA-Habitat/metiers/peinture.html</loc><lastmod>2026-11-06</lastmod><priority>0.8</priority></url>
+  <url><loc>https://adriano74f.github.io/VIDA-Habitat/metiers/suivi-chantier.html</loc><lastmod>2026-11-06</lastmod><priority>0.8</priority></url>
+  <url><loc>https://adriano74f.github.io/VIDA-Habitat/metiers/architecture.html</loc><lastmod>2026-11-06</lastmod><priority>0.8</priority></url>
+</urlset>

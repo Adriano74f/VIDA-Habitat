@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# PLACEHOLDER : adresse du site à adapter si un nom de domaine est acheté
+Sitemap: https://adriano74f.github.io/VIDA-Habitat/sitemap.xml
