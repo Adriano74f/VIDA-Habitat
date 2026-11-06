@@ -13,6 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initParallax();
   initReveal();
   initCounters();
+  initProcess();
+  initCardTilt();
+  initMobileCta();
   initBackTop();
   initForm();
   initAnchors();
@@ -279,6 +282,129 @@ function initCounters() {
   }, { threshold: 0.4 });
 
   counters.forEach(el => io.observe(el));
+}
+
+/* ─── Timeline « De votre appel à la livraison » ───
+   La ligne dorée se remplit au rythme du scroll et allume chaque étape
+   quand elle l'atteint. Horizontale sur desktop, verticale en dessous de
+   1024 px : la géométrie est mesurée sur les pastilles elles-mêmes. */
+function initProcess() {
+  const wrap  = document.querySelector('.process');
+  const steps = wrap ? [...wrap.querySelectorAll('.process-step')] : [];
+  if (steps.length < 2) return;
+  const nums = steps.map(step => step.querySelector('.process-step-num'));
+
+  let vertical = false, start = 0, length = 1, marks = [];
+
+  const measure = () => {
+    const box = wrap.getBoundingClientRect();
+    const centers = nums.map(n => {
+      const r = n.getBoundingClientRect();
+      return { x: r.left + r.width / 2 - box.left, y: r.top + r.height / 2 - box.top };
+    });
+    vertical = Math.abs(centers[1].x - centers[0].x) < 2;
+    const axis = vertical ? 'y' : 'x';
+    start  = centers[0][axis];
+    length = Math.max(1, centers[centers.length - 1][axis] - start);
+    marks  = centers.map(c => (c[axis] - start) / length);
+    wrap.style.setProperty('--line-start', `${start}px`);
+    wrap.style.setProperty('--line-length', `${length}px`);
+  };
+
+  measure();
+  window.addEventListener('resize', () => { measure(); requestUpdate(); }, { passive: true });
+  window.addEventListener('load', () => { measure(); requestUpdate(); }, { once: true });
+  // Les étapes glissent à leur apparition : on remesure une fois posées
+  wrap.addEventListener('animationend', e => { if (e.target.classList.contains('process-step')) { measure(); requestUpdate(); } });
+
+  // Animations réduites ou navigateur ancien : état final directement
+  if (prefersReducedMotion() || !('IntersectionObserver' in window)) return;
+
+  wrap.classList.add('is-animated');
+  let visible = false, ticking = false;
+
+  const update = () => {
+    ticking = false;
+    const vh  = window.innerHeight;
+    const box = wrap.getBoundingClientRect();
+    // Vertical : la ligne suit un « point de lecture » à 65 % de l'écran.
+    // Horizontal : elle se remplit pendant que la frise traverse l'écran.
+    const raw = vertical
+      ? (vh * 0.65 - (box.top + start)) / length
+      : (vh * 0.85 - box.top) / (vh * 0.45);
+    const p = Math.min(1, Math.max(0, raw));
+    wrap.style.setProperty('--progress', p.toFixed(4));
+    steps.forEach((step, i) => step.classList.toggle('is-active', p > 0 && p >= marks[i] - 0.001));
+  };
+
+  function requestUpdate() {
+    if (!visible || ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  }
+
+  new IntersectionObserver(([entry]) => {
+    visible = entry.isIntersecting;
+    if (visible) { measure(); requestUpdate(); }
+  }).observe(wrap);
+  window.addEventListener('scroll', requestUpdate, { passive: true });
+}
+
+/* ─── Cartes métiers : léger relief 3D et reflet au survol ───
+   Souris uniquement, jamais si l'utilisateur demande moins d'animations. */
+function initCardTilt() {
+  if (prefersReducedMotion() || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+  document.querySelectorAll('.service-card').forEach(card => {
+    const amplitude = card.classList.contains('service-card-wide') ? 2 : 5; // degrés
+    let frame = 0;
+
+    card.addEventListener('pointermove', e => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width;
+      const y = (e.clientY - r.top) / r.height;
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        card.style.setProperty('--ry', `${((x - 0.5) * amplitude).toFixed(2)}deg`);
+        card.style.setProperty('--rx', `${((0.5 - y) * amplitude).toFixed(2)}deg`);
+        card.style.setProperty('--mx', `${(x * 100).toFixed(1)}%`);
+        card.style.setProperty('--my', `${(y * 100).toFixed(1)}%`);
+      });
+    });
+
+    card.addEventListener('pointerleave', () => {
+      cancelAnimationFrame(frame);
+      ['--rx', '--ry', '--mx', '--my'].forEach(prop => card.style.removeProperty(prop));
+    });
+  });
+}
+
+/* ─── Barre « Appeler / Devis » (mobile et tablette) ───
+   Apparaît après le haut de page, s'efface sur le footer (qui contient
+   déjà les coordonnées) et pendant la saisie d'un formulaire (clavier). */
+function initMobileCta() {
+  const bar = document.querySelector('.mobile-cta');
+  if (!bar) return;
+  const footer = document.querySelector('.site-footer');
+  let scrolled = false, footerVisible = false, typing = false;
+
+  const render = () => bar.classList.toggle('is-visible', scrolled && !footerVisible && !typing);
+
+  window.addEventListener('scroll', () => {
+    const next = window.scrollY > 240;
+    if (next !== scrolled) { scrolled = next; render(); }
+  }, { passive: true });
+
+  if (footer && 'IntersectionObserver' in window) {
+    new IntersectionObserver(([entry]) => { footerVisible = entry.isIntersecting; render(); }).observe(footer);
+  }
+
+  const isField = el => el.matches?.('input:not([type="checkbox"]):not([type="radio"]), textarea, select');
+  document.addEventListener('focusin', e => { if (isField(e.target)) { typing = true; render(); } });
+  document.addEventListener('focusout', e => { if (isField(e.target)) { typing = false; render(); } });
+
+  scrolled = window.scrollY > 240;
+  render();
 }
 
 /* ─── Back to top ─── */
