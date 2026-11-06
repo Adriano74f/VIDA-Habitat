@@ -403,6 +403,35 @@ main:focus { outline: none; }
 .header-phone { transition: color 0.2s; }
 .header-phone:hover { color: var(--accent); }
 .site-header.solid .header-phone:hover { color: var(--accent-ink); }
+/* Menu à 6 entrées : les libellés restent sur une ligne et le menu se resserre sur les écrans moyens */
+.nav-link { white-space: nowrap; }
+@media (max-width: 1400px) {
+  .header-nav { gap: 0.15rem; }
+  .nav-link { padding: 0.5rem 0.75rem; }
+  .nav-link::after { left: 0.75rem; right: 0.75rem; }
+  /* Téléphone en icône seule (le numéro reste lu par les lecteurs d'écran) */
+  .header-phone { font-size: 0; gap: 0; width: 40px; height: 40px; justify-content: center; border: 1px solid rgba(255,255,255,0.3); border-radius: 50%; }
+  .site-header.solid .header-phone { border-color: var(--border); }
+  .header-phone svg { width: 16px; height: 16px; }
+}
+@media (max-width: 1180px) {
+  .site-header { padding: 0 1.5rem; }
+  .nav-link { font-size: 0.72rem; letter-spacing: 0.05em; padding: 0.5rem 0.55rem; }
+  .nav-link::after { left: 0.55rem; right: 0.55rem; }
+  .header-actions { gap: 0.6rem; }
+  .header-actions .btn { padding-left: 1.2rem; padding-right: 1.2rem; }
+  .logo-text { font-size: 1.25rem; }
+}
+/* Tablette : menu burger, mais téléphone et « Devis gratuit » restent visibles */
+@media (max-width: 1023px) {
+  .header-nav { display: none; }
+  .header-actions { margin-left: auto; }
+  .site-header .burger { display: flex; margin-left: 1rem; }
+}
+@media (max-width: 900px) {
+  .header-actions { display: none; }
+  .site-header .burger { margin-left: auto; }
+}
 
 .burger {
   display: none;
@@ -2201,3 +2230,377 @@ a.gallery-item { display: block; }
 
 /* ─── 38. Selection ─── */
 ::selection { background: var(--accent); color: var(--primary); }
+
+/* ─── 39. Page Réalisations ───────────────────────────────────
+   Avant / après (.ba), filtres + galerie (.works-*), visionneuse (.lightbox) */
+
+/* Avant / après */
+.ba-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(2.5rem, 5vw, 5rem);
+  align-items: center;
+}
+.ba-text h2 { margin: 14px 0 0; }
+.ba-text p { color: var(--text-mid); margin: 1.5rem 0; }
+.ba-points { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.85rem; }
+.ba-points li {
+  position: relative;
+  padding-left: 2rem;
+  color: var(--text);
+  font-weight: 500;
+}
+.ba-points li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.8em;
+  width: 1.1rem;
+  height: 1px;
+  background: var(--accent-strong);
+}
+.ba { margin: 0; }
+.ba-frame {
+  --pos: 50%;
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  background: var(--primary);
+  cursor: ew-resize;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.ba-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+.ba-before { position: absolute; inset: 0; clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
+.ba-before .ba-img { filter: saturate(0.8); }
+.ba-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--pos);
+  width: 2px;
+  margin-left: -1px;
+  background: var(--accent);
+  box-shadow: 0 0 0 1px rgba(42,31,14,0.15), 0 0 24px rgba(0,0,0,0.35);
+  pointer-events: none;
+}
+.ba-knob {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 54px;
+  height: 54px;
+  margin: -27px 0 0 -27px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 8px 26px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(255,255,255,0.35);
+  display: grid;
+  place-items: center;
+  transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out);
+}
+.ba-knob svg { width: 24px; height: 24px; fill: var(--primary); }
+.ba-frame:hover .ba-knob, .ba-frame.is-dragging .ba-knob { transform: scale(1.08); }
+.ba-frame:has(.ba-range:focus-visible) .ba-knob { box-shadow: 0 0 0 3px var(--white), 0 0 0 6px var(--accent-dark), 0 8px 26px rgba(0,0,0,0.35); }
+/* Le curseur natif sert au clavier et aux lecteurs d'écran ; souris et doigt passent par le cadre */
+.ba-range {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+.ba-tag, .ba-badge {
+  position: absolute;
+  z-index: 2;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--white);
+  background: rgba(30,22,10,0.62);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-radius: 50px;
+  pointer-events: none;
+  transition: opacity 0.3s var(--ease-out);
+}
+.ba-tag { top: 1rem; font-size: 0.68rem; letter-spacing: 0.18em; padding: 0.4rem 0.85rem; }
+.ba-tag-before { left: 1rem; }
+.ba-tag-after { right: 1rem; }
+.ba-frame.hide-before .ba-tag-before, .ba-frame.hide-after .ba-tag-after { opacity: 0; }
+.ba-badge {
+  left: 50%;
+  bottom: 1rem;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  padding: 0.35rem 0.8rem;
+  border: 1px dashed rgba(232,201,122,0.7);
+  color: var(--accent-light);
+}
+.ba-caption { margin-top: 0.9rem; font-size: 0.85rem; color: var(--text-light); text-align: center; }
+
+/* Filtres */
+.works-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.55rem;
+  margin: -0.5rem 0 clamp(2rem, 3vw, 3rem);
+}
+.works-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-sans);
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: var(--text-mid);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  padding: 0.55rem 1.1rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.25s, background-color 0.25s, border-color 0.25s;
+}
+.works-filter:hover { border-color: var(--accent); color: var(--text); }
+.works-filter[aria-pressed="true"] { background: var(--primary); border-color: var(--primary); color: var(--white); }
+.works-filter-count {
+  font-size: 0.72rem;
+  color: var(--text-light);
+  font-variant-numeric: tabular-nums;
+}
+.works-filter[aria-pressed="true"] .works-filter-count { color: var(--accent-light); }
+
+/* Galerie : échelonnement plafonné (24 photos ne doivent pas mettre 2 s à apparaître) */
+.js .works-grid.stagger.visible > * { animation-delay: calc(min(var(--i, 0), 6) * 80ms); }
+/* Galerie */
+.works-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: clamp(200px, 19vw, 270px);
+  grid-auto-flow: dense;
+  gap: 1rem;
+}
+.works-item[hidden] { display: none; }
+.works-item.is-tall { grid-row: span 2; }
+.works-item.is-wide { grid-column: span 2; }
+.works-card {
+  position: relative;
+  display: block;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--primary);
+  color: var(--white);
+  isolation: isolate;
+}
+.works-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s var(--ease-out);
+}
+.works-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top, rgba(20,14,6,0.9) 0%, rgba(20,14,6,0.45) 40%, rgba(20,14,6,0) 70%);
+}
+/* Filet doré intérieur au survol (même langage que les cartes métiers) */
+.works-card::before {
+  content: '';
+  position: absolute;
+  inset: 10px;
+  z-index: 2;
+  border: 1px solid rgba(232,201,122,0.75);
+  border-radius: 3px;
+  opacity: 0;
+  transform: scale(1.03);
+  transition: opacity 0.5s var(--ease-out), transform 0.6s var(--ease-out);
+  pointer-events: none;
+}
+.works-card-meta {
+  position: absolute;
+  left: 1.3rem;
+  right: 1.3rem;
+  bottom: 1.2rem;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  transition: transform 0.5s var(--ease-out);
+}
+.works-card-cat {
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+}
+.works-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.08rem;
+  line-height: 1.3;
+  color: var(--white);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.works-card-zoom {
+  position: absolute;
+  top: 1.1rem;
+  right: 1.1rem;
+  z-index: 3;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(255,255,255,0.14);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.35);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out);
+}
+.works-card-zoom svg { width: 20px; height: 20px; fill: var(--white); }
+.works-card:hover img, .works-card:focus-visible img { transform: scale(1.06); }
+.works-card:hover::before, .works-card:focus-visible::before { opacity: 1; transform: none; }
+.works-card:hover .works-card-meta, .works-card:focus-visible .works-card-meta { transform: translateY(-6px); }
+.works-card:hover .works-card-zoom, .works-card:focus-visible .works-card-zoom { opacity: 1; transform: none; }
+.works-card:focus-visible { outline: 2px solid var(--accent-dark); outline-offset: 3px; }
+
+/* Pages métiers : lien vers la galerie */
+.metier-gallery-more { margin-top: 2.5rem; }
+
+/* Visionneuse */
+html.lightbox-open { overflow: hidden; }
+.lightbox {
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--white);
+  overflow: hidden;
+}
+.lightbox::backdrop {
+  background: rgba(18,13,6,0.94);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+.lightbox[open], .lightbox[open]::backdrop { animation: reveal-fade 0.35s var(--ease-out); }
+.lightbox-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 4.5rem clamp(1rem, 8vw, 7rem) 2rem;
+  touch-action: pan-y;
+}
+.lightbox-figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 1.1rem; max-width: 100%; }
+.lightbox-stage { display: grid; place-items: center; max-width: 100%; }
+.lightbox-img {
+  display: block;
+  max-width: min(1400px, 100%);
+  max-height: calc(100dvh - 11.5rem);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+  transition: opacity 0.35s var(--ease-out), transform 0.5s var(--ease-out);
+}
+.lightbox-img.is-changing { opacity: 0; transform: translateX(var(--from, 0)) scale(0.985); transition: none; }
+.lightbox-caption { display: flex; flex-direction: column; align-items: center; gap: 0.35rem; text-align: center; max-width: 60ch; }
+.lightbox-cat { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); }
+.lightbox-title { font-family: var(--font-serif); font-size: clamp(1.05rem, 1.5vw, 1.3rem); color: var(--white); }
+.lightbox-count {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.75);
+}
+.lightbox-btn {
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.28);
+  color: var(--white);
+  cursor: pointer;
+  transition: background-color 0.25s, border-color 0.25s, color 0.25s;
+}
+.lightbox-btn svg { width: 26px; height: 26px; fill: currentColor; }
+.lightbox-btn:hover { background: var(--accent); border-color: var(--accent); color: var(--primary); }
+.lightbox-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.lightbox-prev, .lightbox-next { top: 50%; margin-top: -26px; }
+.lightbox-prev { left: clamp(0.75rem, 2vw, 2rem); }
+.lightbox-next { right: clamp(0.75rem, 2vw, 2rem); }
+.lightbox-close { top: 1rem; right: 1rem; }
+
+@media (max-width: 1024px) {
+  .ba-layout { grid-template-columns: 1fr; }
+  .ba-text { max-width: 640px; }
+  .works-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: clamp(190px, 30vw, 260px); }
+}
+@media (max-width: 640px) {
+  .works-filters {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    margin-inline: -1.2rem;
+    padding: 0.25rem 1.2rem;
+    scrollbar-width: none;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 1.2rem, #000 calc(100% - 1.2rem), transparent);
+    mask-image: linear-gradient(to right, transparent, #000 1.2rem, #000 calc(100% - 1.2rem), transparent);
+  }
+  .works-filters::-webkit-scrollbar { display: none; }
+  .works-grid { grid-auto-rows: 150px; gap: 0.6rem; }
+  .works-card-meta { left: 0.8rem; right: 0.8rem; bottom: 0.75rem; }
+  .works-card-cat { font-size: 0.58rem; letter-spacing: 0.12em; }
+  .works-card-title { font-size: 0.86rem; }
+  .works-card::before { inset: 6px; }
+  .ba-knob { width: 46px; height: 46px; margin: -23px 0 0 -23px; }
+  .ba-badge { font-size: 0.56rem; letter-spacing: 0.06em; }
+  .lightbox-inner { padding: 4rem 0.75rem 6rem; }
+  .lightbox-img { max-height: calc(100dvh - 14rem); border-radius: var(--radius); }
+  .lightbox-prev, .lightbox-next { top: auto; bottom: 1.25rem; margin-top: 0; }
+  .lightbox-prev { left: calc(50% - 64px); }
+  .lightbox-next { right: calc(50% - 64px); }
+}
+@media (max-width: 380px) {
+  .works-filters { margin-inline: -1rem; padding-inline: 1rem; }
+}
+/* Écrans tactiles : loupe visible en permanence (pas de survol) */
+@media (hover: none) {
+  .works-card-zoom { opacity: 1; transform: none; width: 34px; height: 34px; top: 0.6rem; right: 0.6rem; }
+  .works-card-zoom svg { width: 16px; height: 16px; }
+}

@@ -19,6 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initBackTop();
   initMaps();
   initForm();
+  initWorks();
+  initLightbox();
+  initBeforeAfter();
   initAnchors();
   setActiveNav();
   setYear();
@@ -132,7 +135,7 @@ function initMobileMenu() {
   });
 
   // Passage en affichage desktop : on referme
-  window.matchMedia('(min-width: 901px)').addEventListener('change', e => {
+  window.matchMedia('(min-width: 1024px)').addEventListener('change', e => {
     if (e.matches && isOpen()) setOpen(false);
   });
 }
@@ -611,6 +614,256 @@ function initForm() {
       clearTimeout(timeout);
       setLoading(false);
     }
+  });
+}
+
+/* ─── Réalisations : filtres de la galerie ───
+   Compteurs calculés depuis le HTML, filtre lisible dans l'URL
+   (realisations.html#sols), réorganisation animée (FLIP). */
+function initWorks() {
+  const grid = document.querySelector('.works-grid');
+  const buttons = [...document.querySelectorAll('.works-filter')];
+  if (!grid || !buttons.length) return;
+  const items = [...grid.children];
+  const status = document.querySelector('[data-works-status]');
+  const gallery = document.getElementById('galerie');
+
+  buttons.forEach(btn => {
+    const f = btn.dataset.filter;
+    const n = f === 'all' ? items.length : items.filter(i => i.dataset.cat === f).length;
+    if (!n) { btn.hidden = true; return; } // catégorie sans photo : bouton masqué
+    const count = document.createElement('span');
+    count.className = 'works-filter-count';
+    count.textContent = n;
+    btn.append(' ', count);
+  });
+
+  const valid = f => buttons.some(b => b.dataset.filter === f && !b.hidden);
+
+  const apply = (filter, animate) => {
+    if (!valid(filter)) filter = 'all';
+    buttons.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.filter === filter)));
+
+    const flip = animate && !prefersReducedMotion() && typeof grid.animate === 'function';
+    const before = flip ? new Map(items.filter(i => !i.hidden).map(i => [i, i.getBoundingClientRect()])) : null;
+
+    let shown = 0;
+    items.forEach(i => {
+      const show = filter === 'all' || i.dataset.cat === filter;
+      i.hidden = !show;
+      if (show) shown++;
+    });
+    if (status) status.textContent = `${shown} photo${shown > 1 ? 's' : ''} affichée${shown > 1 ? 's' : ''}`;
+    if (!flip) return;
+
+    let k = 0;
+    items.forEach(i => {
+      if (i.hidden) return;
+      const a = before.get(i);
+      const b = i.getBoundingClientRect();
+      if (a) {
+        const dx = a.left - b.left, dy = a.top - b.top;
+        const sx = a.width / b.width, sy = a.height / b.height;
+        if (Math.abs(dx) < 1 && Math.abs(dy) < 1 && Math.abs(sx - 1) < 0.01 && Math.abs(sy - 1) < 0.01) return;
+        i.animate([
+          { transformOrigin: 'top left', transform: `translate(${dx}px, ${dy}px) scale(${sx}, ${sy})` },
+          { transformOrigin: 'top left', transform: 'none' },
+        ], { duration: 650, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' });
+      } else {
+        i.animate([
+          { opacity: 0, transform: 'translateY(18px) scale(0.96)' },
+          { opacity: 1, transform: 'none' },
+        ], { duration: 600, delay: 60 + 40 * k++, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', fill: 'backwards' });
+      }
+    });
+  };
+
+  buttons.forEach(btn => btn.addEventListener('click', () => {
+    const f = btn.dataset.filter;
+    apply(f, true);
+    history.replaceState(null, '', f === 'all' ? location.pathname + location.search : '#' + f);
+  }));
+
+  // Filtre demandé dans l'adresse (liens depuis l'accueil et les pages métiers)
+  const fromHash = () => decodeURIComponent(location.hash.slice(1));
+  const initial = fromHash();
+  if (valid(initial) && initial !== 'all') {
+    apply(initial, false);
+    if (gallery) {
+      const go = () => scrollToTarget(gallery, (document.querySelector('.site-header')?.offsetHeight || 0) + 20);
+      if (document.readyState === 'complete') requestAnimationFrame(go);
+      else window.addEventListener('load', go, { once: true });
+    }
+  } else {
+    apply('all', false);
+  }
+  window.addEventListener('hashchange', () => { if (valid(fromHash())) apply(fromHash(), true); });
+}
+
+/* ─── Visionneuse photo (<dialog>) ───
+   Sans JavaScript ou sans <dialog>, les liens ouvrent simplement la photo.
+   Clavier : ← → pour naviguer, Échap pour fermer ; glisser au doigt sur mobile. */
+function initLightbox() {
+  const dialog = document.querySelector('.lightbox');
+  const links = [...document.querySelectorAll('[data-lightbox]')];
+  if (!dialog || !links.length || typeof dialog.showModal !== 'function') return;
+
+  const img = dialog.querySelector('.lightbox-img');
+  const cat = dialog.querySelector('.lightbox-cat');
+  const title = dialog.querySelector('.lightbox-title');
+  const count = dialog.querySelector('.lightbox-count');
+  const pad = n => String(n).padStart(2, '0');
+  let list = [];
+  let index = 0;
+  let opener = null;
+
+  const preload = a => { if (a) { const p = new Image(); p.src = a.href; } };
+
+  const show = (i, dir = 0) => {
+    index = (i + list.length) % list.length;
+    const a = list[index];
+    const thumb = a.querySelector('img');
+
+    if (!prefersReducedMotion()) {
+      img.style.setProperty('--from', `${dir * 36}px`);
+      img.classList.add('is-changing');
+      requestAnimationFrame(() => requestAnimationFrame(() => img.classList.remove('is-changing')));
+    }
+    // Miniature déjà chargée affichée tout de suite, remplacée par la grande dès qu'elle arrive
+    img.src = thumb.currentSrc || thumb.src;
+    img.alt = thumb.alt;
+    const big = new Image();
+    big.onload = () => { if (list[index] === a) img.src = big.src; };
+    big.src = a.href;
+
+    cat.textContent = a.querySelector('.works-card-cat')?.textContent || '';
+    title.textContent = a.querySelector('.works-card-title')?.textContent || thumb.alt;
+    count.textContent = `${pad(index + 1)} / ${pad(list.length)}`;
+    count.setAttribute('aria-label', `Photo ${index + 1} sur ${list.length}`);
+    const single = list.length < 2;
+    dialog.querySelector('.lightbox-prev').hidden = single;
+    dialog.querySelector('.lightbox-next').hidden = single;
+    preload(list[(index + 1) % list.length]);
+    preload(list[(index - 1 + list.length) % list.length]);
+  };
+
+  links.forEach(a => a.addEventListener('click', e => {
+    if (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return; // nouvel onglet : comportement normal
+    e.preventDefault();
+    opener = a;
+    list = links.filter(l => !l.closest('[hidden]'));
+    dialog.showModal();
+    document.documentElement.classList.add('lightbox-open');
+    if (lenis) lenis.stop();
+    show(list.indexOf(a));
+    dialog.querySelector('.lightbox-close').focus();
+  }));
+
+  const close = () => dialog.close();
+  dialog.addEventListener('close', () => {
+    document.documentElement.classList.remove('lightbox-open');
+    if (lenis) lenis.start();
+    img.removeAttribute('src');
+    if (opener) opener.focus({ preventScroll: true });
+  });
+
+  dialog.querySelector('.lightbox-close').addEventListener('click', close);
+  dialog.querySelector('.lightbox-prev').addEventListener('click', () => show(index - 1, -1));
+  dialog.querySelector('.lightbox-next').addEventListener('click', () => show(index + 1, 1));
+
+  // Clic dans le vide autour de la photo : fermeture
+  dialog.addEventListener('click', e => {
+    if (e.target === dialog || e.target.classList.contains('lightbox-inner') || e.target.classList.contains('lightbox-stage')) close();
+  });
+
+  dialog.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); show(index - 1, -1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); show(index + 1, 1); }
+  });
+
+  // Balayage horizontal (tactile)
+  let startX = null, startY = 0;
+  dialog.addEventListener('pointerdown', e => { if (e.pointerType !== 'mouse') { startX = e.clientX; startY = e.clientY; } });
+  dialog.addEventListener('pointerup', e => {
+    if (startX === null) return;
+    const dx = e.clientX - startX, dy = e.clientY - startY;
+    startX = null;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) show(index + (dx < 0 ? 1 : -1), dx < 0 ? 1 : -1);
+  });
+  dialog.addEventListener('pointercancel', () => { startX = null; });
+}
+
+/* ─── Curseur avant / après ───
+   Souris et doigt : glisser sur l'image (le défilement vertical reste possible).
+   Clavier : le <input type="range"> masqué (flèches, Début, Fin). */
+function initBeforeAfter() {
+  document.querySelectorAll('[data-ba]').forEach(fig => {
+    const frame = fig.querySelector('.ba-frame');
+    const range = fig.querySelector('.ba-range');
+    if (!frame || !range) return;
+    let intro = 0;
+    const stopIntro = () => { cancelAnimationFrame(intro); intro = 0; };
+
+    const set = v => {
+      v = Math.max(0, Math.min(100, v));
+      frame.style.setProperty('--pos', `${v}%`);
+      range.value = Math.round(v);
+      range.setAttribute('aria-valuetext', `${Math.round(v)} % avant, ${100 - Math.round(v)} % après`);
+      frame.classList.toggle('hide-before', v < 14);
+      frame.classList.toggle('hide-after', v > 86);
+    };
+    set(+range.value);
+
+    range.addEventListener('input', () => { stopIntro(); set(+range.value); });
+    range.addEventListener('keydown', e => {
+      const step = { ArrowLeft: -5, ArrowDown: -5, ArrowRight: 5, ArrowUp: 5 }[e.key];
+      if (!step) return;
+      e.preventDefault();
+      stopIntro();
+      set(+range.value + step);
+    });
+
+    const at = e => {
+      const r = frame.getBoundingClientRect();
+      return ((e.clientX - r.left) / r.width) * 100;
+    };
+    let drag = null;
+    frame.addEventListener('pointerdown', e => {
+      if (e.button !== 0) return;
+      stopIntro();
+      drag = e.pointerId;
+      frame.classList.add('is-dragging');
+      frame.setPointerCapture(e.pointerId);
+      if (e.pointerType === 'mouse') { e.preventDefault(); set(at(e)); range.focus({ preventScroll: true }); }
+    });
+    frame.addEventListener('pointermove', e => { if (drag === e.pointerId) set(at(e)); });
+    const end = e => {
+      if (drag !== e.pointerId) return;
+      drag = null;
+      frame.classList.remove('is-dragging');
+    };
+    frame.addEventListener('pointerup', end);
+    frame.addEventListener('pointercancel', end);
+
+    // Petit mouvement d'invitation la première fois que le curseur apparaît
+    if (prefersReducedMotion() || !('IntersectionObserver' in window)) return;
+    const io = new IntersectionObserver(entries => {
+      if (!entries[0].isIntersecting) return;
+      io.disconnect();
+      const keys = [50, 66, 36, 50];
+      const seg = 650;
+      let t0 = null;
+      const ease = t => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+      const tick = now => {
+        if (t0 === null) t0 = now;
+        const t = (now - t0) / seg;
+        const k = Math.min(Math.floor(t), keys.length - 2);
+        set(keys[k] + (keys[k + 1] - keys[k]) * ease(Math.min(t - k, 1)));
+        intro = t < keys.length - 1 ? requestAnimationFrame(tick) : 0;
+      };
+      setTimeout(() => { intro = requestAnimationFrame(tick); }, 700);
+    }, { threshold: 0.6 });
+    io.observe(frame);
   });
 }
 
