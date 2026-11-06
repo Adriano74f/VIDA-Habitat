@@ -7,6 +7,7 @@ const prefersReducedMotion = () => reducedMotionQuery.matches;
 
 document.addEventListener('DOMContentLoaded', () => {
   initHeader();
+  initSmoothScroll();
   initMobileMenu();
   initDropdown();
   initParallax();
@@ -24,14 +25,68 @@ function initHeader() {
   const header = document.querySelector('.site-header');
   if (!header) return;
 
+  let lastY = window.scrollY;
+  let ticking = false;
+
   const update = () => {
-    const solid = window.scrollY > 60;
+    ticking = false;
+    const y = window.scrollY;
+    const solid = y > 60;
     header.classList.toggle('solid', solid);
     header.classList.toggle('transparent', !solid);
+
+    // Se masque en descendant (au-delà du hero), réapparaît dès qu'on remonte
+    const menuOpen = document.querySelector('.mobile-menu.open');
+    if (menuOpen || y < 400) header.classList.remove('is-hidden');
+    else if (y > lastY + 6) header.classList.add('is-hidden');
+    else if (y < lastY - 6) header.classList.remove('is-hidden');
+    if (Math.abs(y - lastY) > 6) lastY = y;
   };
 
-  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('scroll', () => {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }, { passive: true });
   update();
+}
+
+/* ─── Défilement fluide (Lenis) ───
+   Desktop avec souris uniquement, jamais si l'utilisateur demande moins
+   d'animations. Chargé après la page ; sans lui, le défilement natif reste. */
+const LENIS_SRC = 'https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js';
+let lenis = null;
+
+function initSmoothScroll() {
+  if (prefersReducedMotion() || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+  const start = () => loadScript(LENIS_SRC).then(() => {
+    if (!window.Lenis || prefersReducedMotion()) return;
+    lenis = new window.Lenis({ duration: 1.1, easing: t => 1 - Math.pow(1 - t, 4), smoothWheel: true });
+    const raf = time => { lenis.raf(time); requestAnimationFrame(raf); };
+    requestAnimationFrame(raf);
+    reducedMotionQuery.addEventListener('change', () => { if (prefersReducedMotion()) { lenis.destroy(); lenis = null; } });
+  }).catch(() => { /* CDN indisponible : défilement natif */ });
+
+  if (document.readyState === 'complete') start();
+  else window.addEventListener('load', start, { once: true });
+}
+
+function loadScript(src) {
+  return new Promise((resolve, reject) => {
+    const s = document.createElement('script');
+    s.src = src;
+    s.async = true;
+    s.onload = resolve;
+    s.onerror = reject;
+    document.head.appendChild(s);
+  });
+}
+
+/* Défilement vers une position ou un élément, fluide si possible */
+function scrollToTarget(target, offset = 0) {
+  const instant = prefersReducedMotion();
+  if (lenis) { lenis.scrollTo(target, { offset: -offset, immediate: instant }); return; }
+  const top = typeof target === 'number' ? target : target.getBoundingClientRect().top + window.scrollY - offset;
+  window.scrollTo({ top, behavior: instant ? 'auto' : 'smooth' });
 }
 
 /* ─── Mobile menu ─── */
@@ -48,6 +103,7 @@ function initMobileMenu() {
     burger.setAttribute('aria-expanded', String(open));
     burger.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
     document.body.style.overflow = open ? 'hidden' : '';
+    if (lenis) open ? lenis.stop() : lenis.start();
     if (open) menu.querySelector('a')?.focus({ preventScroll: true });
     else if (returnFocus) burger.focus();
   };
@@ -164,6 +220,11 @@ function initReveal() {
   const els = document.querySelectorAll('.reveal, .stagger');
   if (!els.length) return;
 
+  // Numérotation des enfants pour l'échelonnement (--i), sans limite de nombre
+  document.querySelectorAll('.stagger, .section-header.reveal, .cta-banner-content.reveal').forEach(parent => {
+    [...parent.children].forEach((child, i) => child.style.setProperty('--i', i));
+  });
+
   if (prefersReducedMotion() || !('IntersectionObserver' in window)) {
     els.forEach(el => el.classList.add('visible'));
     return;
@@ -230,7 +291,7 @@ function initBackTop() {
   }, { passive: true });
 
   btn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
+    scrollToTarget(0);
     // Le focus clavier revient en haut de page
     document.querySelector('.header-logo')?.focus({ preventScroll: true });
   });
@@ -423,9 +484,9 @@ function initAnchors() {
       const target = document.getElementById(decodeURIComponent(hash.slice(1)));
       if (!target) return;
       e.preventDefault();
-      const offset = (document.querySelector('.site-header')?.offsetHeight || 0) + 20;
-      const top = target === document.getElementById('main') ? window.scrollY : target.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
+      if (target !== document.getElementById('main')) {
+        scrollToTarget(target, (document.querySelector('.site-header')?.offsetHeight || 0) + 20);
+      }
       // Le focus suit le lien (indispensable pour le lien d'évitement)
       if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
       target.focus({ preventScroll: true });
