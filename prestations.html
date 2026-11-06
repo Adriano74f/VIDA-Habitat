@@ -42,9 +42,8 @@
   }
   </script>
   <!-- @seo:end -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="preload" href="fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/playfair-display-latin.woff2" as="font" type="font/woff2" crossorigin>
   <script>document.documentElement.classList.add('js')</script>
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -126,9 +125,9 @@
 <section class="section-sm bg-light">
   <div class="container text-center reveal">
     <span class="label">Vue d'ensemble</span>
-    <h2 style="margin: 1rem auto 1rem; max-width: 700px;">Des prestations complètes pour tous vos projets</h2>
+    <h2 class="intro-title">Des prestations complètes pour tous vos projets</h2>
     <div class="divider"></div>
-    <p style="margin: 0 auto; max-width: 70ch; color: var(--text-mid);">Que vous souhaitiez rénover entièrement un appartement, rafraîchir la façade d'un immeuble, aménager un espace professionnel ou concrétiser un projet architectural, VIDA Habitat mobilise les expertises nécessaires.</p>
+    <p class="intro-text">Que vous souhaitiez rénover entièrement un appartement, rafraîchir la façade d'un immeuble, aménager un espace professionnel ou concrétiser un projet architectural, VIDA Habitat mobilise les expertises nécessaires.</p>
   </div>
 </section>
 
@@ -156,8 +155,8 @@
       </div>
     </div>
     <!-- Photos de chantiers (à remplacer par de vraies photos) -->
-    <div style="margin-top: 3rem;">
-      <p class="label" style="margin-bottom: 1rem;">Réalisations</p>
+    <div class="mt-3">
+      <p class="label mb-1">Réalisations</p>
       <div class="prestation-photos">
         <div class="prestation-photo">
           <div class="photo-placeholder">
@@ -223,8 +222,8 @@
         <img alt="Rénovation extérieure" src="https://images.unsplash.com/photo-1763665814605-a6489a3bf2a0?auto=format&amp;fit=crop&amp;w=800&amp;q=80" srcset="https://images.unsplash.com/photo-1763665814605-a6489a3bf2a0?auto=format&amp;fit=crop&amp;w=480&amp;q=80 480w, https://images.unsplash.com/photo-1763665814605-a6489a3bf2a0?auto=format&amp;fit=crop&amp;w=800&amp;q=80 800w, https://images.unsplash.com/photo-1763665814605-a6489a3bf2a0?auto=format&amp;fit=crop&amp;w=1200&amp;q=80 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw" width="1200" height="900" loading="lazy" decoding="async">
       </div>
     </div>
-    <div style="margin-top: 3rem;">
-      <p class="label" style="margin-bottom: 1rem;">Réalisations</p>
+    <div class="mt-3">
+      <p class="label mb-1">Réalisations</p>
       <div class="prestation-photos">
         <div class="prestation-photo"><div class="photo-placeholder"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>Votre photo de chantier</div></div>
         <div class="prestation-photo"><div class="photo-placeholder"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>Votre photo de chantier</div></div>
@@ -260,8 +259,8 @@
         <a href="contact.html" class="btn btn-accent">Demander un devis</a>
       </div>
     </div>
-    <div style="margin-top: 3rem;">
-      <p class="label" style="margin-bottom: 1rem;">Réalisations</p>
+    <div class="mt-3">
+      <p class="label mb-1">Réalisations</p>
       <div class="prestation-photos">
         <div class="prestation-photo"><div class="photo-placeholder"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>Votre photo de chantier</div></div>
         <div class="prestation-photo"><div class="photo-placeholder"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>Votre photo de chantier</div></div>
@@ -297,8 +296,8 @@
         <a href="contact.html" class="btn btn-accent">Demander un devis</a>
       </div>
     </div>
-    <div style="margin-top: 3rem;">
-      <p class="label" style="margin-bottom: 1rem;">Réalisations</p>
+    <div class="mt-3">
+      <p class="label mb-1">Réalisations</p>
       <div class="prestation-photos">
         <div class="prestation-photo"><div class="photo-placeholder"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>Votre photo de chantier</div></div>
         <div class="prestation-photo"><div class="photo-placeholder"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>Votre photo de chantier</div></div>
@@ -320,7 +319,7 @@
       <span class="label">Prêt à démarrer ?</span>
       <h2>Votre projet mérite le meilleur</h2>
       <p>Contactez-nous dès aujourd'hui pour un devis gratuit et sans engagement. Réponse sous 24 heures.</p>
-      <div class="flex flex-center gap-1" style="flex-wrap:wrap;">
+      <div class="flex flex-center gap-1 flex-wrap">
         <a href="contact.html" class="btn btn-accent">Demander un devis</a>
         <a href="tel:+33450000000" class="btn btn-outline">+33 4 50 00 00 00</a>
       </div>
@@ -402,8 +401,7 @@
 
     <div class="footer-bottom">
       <p>&copy; <span data-year>2025</span> VIDA Habitat. Tous droits réservés.</p>
-      <!-- PLACEHOLDER : pages légales à créer -->
-      <p><a href="#">Mentions légales</a> · <a href="#">Politique de confidentialité</a></p>
+      <p><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Politique de confidentialité</a></p>
     </div>
   </div>
 </footer>

@@ -60,7 +60,8 @@ function initHeader() {
 /* ─── Défilement fluide (Lenis) ───
    Desktop avec souris uniquement, jamais si l'utilisateur demande moins
    d'animations. Chargé après la page ; sans lui, le défilement natif reste. */
-const LENIS_SRC = 'https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js';
+// Lenis 1.1.13 (licence MIT) hébergé sur le site : aucun appel à un CDN tiers
+const LENIS_SRC = new URL('vendor/lenis.min.js', document.currentScript ? document.currentScript.src : location.href).href;
 let lenis = null;
 
 function initSmoothScroll() {

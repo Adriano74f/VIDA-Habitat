@@ -2,6 +2,34 @@
    VIDA HABITAT - Feuille de style principale
    ======================================== */
 
+/* ─── 0. Polices hébergées sur le site (aucun appel à Google Fonts) ───
+   Jost et Playfair Display, licence SIL Open Font License (voir fonts/OFL.txt).
+   Fichiers variables, sous-ensemble latin (français complet). */
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url('../fonts/jost-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 500 700;
+  font-display: swap;
+  src: url('../fonts/playfair-display-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/playfair-display-italic-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 /* ─── 1. Variables ─── */
 :root {
   --primary:       #2A1F0E;
@@ -1024,7 +1052,7 @@ main:focus { outline: none; }
   margin-top: 2px;
 }
 .feature-icon svg { width: 14px; height: 14px; fill: var(--primary); }
-.feature-item h4 { margin-bottom: 0.2rem; font-size: 1rem; }
+.feature-item h3 { margin-bottom: 0.2rem; font-size: 1rem; }
 .feature-item p { font-size: 0.88rem; color: var(--text-light); }
 
 /* ─── 13. Testimonials ─── */
@@ -1127,7 +1155,7 @@ main:focus { outline: none; }
 .map-info h2 { color: var(--text); margin-bottom: 1.5rem; }
 .map-info p { color: var(--text-mid); margin-bottom: 2rem; }
 .zones-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem; }
-.zone-group h4 {
+.zone-group h3 {
   color: var(--accent-ink);
   font-family: var(--font-sans);
   font-size: 0.75rem;
@@ -1218,7 +1246,7 @@ main:focus { outline: none; }
   border: 1px solid var(--border);
 }
 .contact-detail-icon svg { width: 20px; height: 20px; fill: var(--accent); }
-.contact-detail-text h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; font-family: var(--font-sans); color: var(--text-light); margin-bottom: 0.3rem; }
+.contact-detail-text h3 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; font-family: var(--font-sans); color: var(--text-light); margin-bottom: 0.3rem; }
 .contact-detail-text p, .contact-detail-text a { color: var(--text); font-weight: 600; transition: color 0.2s; }
 .contact-detail-text a:hover { color: var(--accent-ink); }
 
@@ -1458,7 +1486,7 @@ main:focus { outline: none; }
   flex-shrink: 0;
 }
 .why-icon svg { width: 24px; height: 24px; fill: var(--accent); }
-.why-card h4 { color: var(--white); margin-bottom: 0.4rem; font-size: 1rem; }
+.why-card h3 { color: var(--white); margin-bottom: 0.4rem; font-size: 1rem; }
 .why-card p { font-size: 0.85rem; color: rgba(255,255,255,0.55); }
 
 /* ─── 20. Prestations Page ─── */
@@ -1565,7 +1593,7 @@ main:focus { outline: none; }
   padding: 1.2rem;
   border-left: 3px solid var(--accent);
 }
-.metier-feature h4 { font-size: 0.9rem; margin-bottom: 0.3rem; }
+.metier-feature h3 { font-size: 0.9rem; margin-bottom: 0.3rem; }
 .metier-feature p { font-size: 0.82rem; color: var(--text-light); }
 .metier-gallery {
   display: grid;
@@ -2657,4 +2685,107 @@ html.lightbox-open { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .js .hero-title .line > span, .js .hero-title em::after { animation: none !important; }
   .hero-3d { display: none; }
+}
+
+/* ─── 41. Classes de mise en page (remplacent les anciens styles en ligne) ─── */
+/* Espacements */
+.mt-05 { margin-top: 0.5rem; }
+.mt-1-5 { margin-top: 1.5rem; }
+.mt-3 { margin-top: 3rem; }
+.mb-1 { margin-bottom: 1rem; }
+.mb-1-5 { margin-bottom: 1.5rem; }
+.mb-2 { margin-bottom: 2rem; }
+.mb-2-5 { margin-bottom: 2.5rem; }
+.mb-5 { margin-bottom: 5rem; }
+.my-1-5 { margin-top: 1.5rem; margin-bottom: 1.5rem; }
+.flex-wrap { flex-wrap: wrap; }
+.grid-2-tight { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+/* Textes */
+.text-mid { color: var(--text-mid); }
+.text-on-dark { color: rgba(255,255,255,0.65); }
+.text-on-dark-strong { color: rgba(255,255,255,0.7); }
+.intro-title { margin: 1rem auto; max-width: 700px; }
+.intro-text { margin: 0 auto; max-width: 70ch; color: var(--text-mid); }
+.heading-spaced { margin: 1rem 0 2rem; }
+.heading-on-dark { color: var(--white); margin: 1rem 0 1.5rem; }
+.feature-item p.feature-note { color: var(--text-mid); font-size: 0.85rem; }
+.feature-item p.feature-note--dark { color: rgba(255,255,255,0.6); }
+
+/* Cartes et images */
+.card.card--dark { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); }
+.card--dark .card-body h3 { color: var(--white); }
+.card--dark .card-body p { color: rgba(255,255,255,0.65); }
+.card-actions { margin-top: 1.2rem; }
+.split-section.split-section--card { border-radius: 12px; overflow: hidden; box-shadow: 0 12px 48px rgba(0,0,0,0.12); }
+.metier-intro-img { width: 100%; border-radius: var(--radius-lg); object-fit: cover; aspect-ratio: 4 / 3; box-shadow: var(--shadow-lg); }
+.img-frame { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow); }
+.img-frame--lg { box-shadow: var(--shadow-lg); }
+.img-cover { width: 100%; object-fit: cover; }
+.img-4-3 { aspect-ratio: 4 / 3; }
+.img-square { aspect-ratio: 1; }
+.plan-svg-box--t3 { aspect-ratio: 740 / 540; }
+
+/* Contact : formulaire et chiffres de réassurance */
+.form-intro { color: var(--text-light); font-size: 0.88rem; margin-bottom: 2rem; }
+.reassurance-figure { font-family: var(--font-serif); font-size: 2.5rem; font-weight: 700; color: var(--accent-strong); }
+.reassurance-text { font-size: 0.88rem; color: var(--text-mid); margin: 0 auto; }
+
+/* ─── 42. Pages légales ─── */
+.page-hero--plain {
+  height: auto;
+  min-height: 0;
+  padding-top: calc(var(--header-h) + clamp(3rem, 6vw, 5rem));
+  background: var(--primary) var(--grain);
+}
+.page-hero--plain .page-hero-content { padding-bottom: clamp(2.5rem, 5vw, 4rem); }
+.page-hero--plain h1 { font-size: clamp(2.2rem, 4vw + 1rem, 3.6rem); }
+.legal { max-width: 780px; margin: 0 auto; counter-reset: legal; }
+.legal-intro { font-size: 1.08rem; color: var(--text-mid); margin-bottom: 2.5rem; }
+.legal h2 {
+  counter-increment: legal;
+  font-size: clamp(1.35rem, 1vw + 1rem, 1.7rem);
+  margin: 3rem 0 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.legal h2::before {
+  content: counter(legal, decimal-leading-zero);
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--accent-ink);
+  margin-bottom: 0.4rem;
+}
+.legal p, .legal li { color: var(--text-mid); line-height: 1.8; }
+.legal p + p { margin-top: 0.9rem; }
+.legal ul { padding-left: 1.2rem; display: grid; gap: 0.7rem; }
+.legal li::marker { color: var(--accent-strong); }
+.legal a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 3px; }
+.legal a:hover { color: var(--text); }
+.legal-list {
+  display: grid;
+  grid-template-columns: minmax(10rem, 14rem) 1fr;
+  margin: 0;
+  border-top: 1px solid var(--border);
+}
+.legal-list dt, .legal-list dd { margin: 0; padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
+.legal-list dt { font-weight: 600; color: var(--text); padding-right: 1.5rem; }
+.legal-list dd { color: var(--text-mid); }
+.legal-todo {
+  display: inline-block;
+  padding: 0.05rem 0.5rem;
+  border: 1px dashed var(--accent-strong);
+  border-radius: var(--radius);
+  background: rgba(201,165,90,0.1);
+  color: var(--accent-ink);
+  font-size: 0.92em;
+}
+.legal-updated { margin-top: 3rem; font-size: 0.85rem; }
+@media (max-width: 640px) {
+  .legal-list { grid-template-columns: 1fr; }
+  .legal-list dt { padding-bottom: 0; border-bottom: 0; }
+  .legal-list dd { padding-top: 0.2rem; }
 }

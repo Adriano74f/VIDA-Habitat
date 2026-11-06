@@ -48,9 +48,8 @@
   }
   </script>
   <!-- @seo:end -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="preload" href="../fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/playfair-display-latin.woff2" as="font" type="font/woff2" crossorigin>
   <script>document.documentElement.classList.add('js')</script>
   <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -134,17 +133,17 @@
         <span class="label">Notre expertise</span>
         <h2>Votre chantier piloté avec rigueur et transparence</h2>
         <p>Un chantier de rénovation implique de nombreux corps de métier qui doivent intervenir dans un ordre précis, avec des délais à respecter et une qualité à maintenir à chaque étape. Sans un pilotage professionnel, les retards s'accumulent, les coûts dérapent et la communication avec le client se dégrade. C'est pourquoi VIDA Habitat propose un service de suivi de chantier complet, assuré par des conducteurs de travaux expérimentés.</p>
-        <p style="margin-top:1rem;">Votre interlocuteur unique coordonne l'ensemble des entreprises, gère les plannings, contrôle la conformité des travaux et vous informe régulièrement de l'avancement. Vous bénéficiez d'une visibilité totale sur votre chantier, où que vous soyez, grâce à nos rapports hebdomadaires illustrés et à notre outil de suivi en ligne.</p>
+        <p class="mt-1">Votre interlocuteur unique coordonne l'ensemble des entreprises, gère les plannings, contrôle la conformité des travaux et vous informe régulièrement de l'avancement. Vous bénéficiez d'une visibilité totale sur votre chantier, où que vous soyez, grâce à nos rapports hebdomadaires illustrés et à notre outil de suivi en ligne.</p>
         <div class="metier-features">
-          <div class="metier-feature"><h4>Coordination multi-entreprises</h4><p>Planification et séquençage précis de l'intervention de chaque corps de métier pour éviter les conflits de planning et les temps morts coûteux.</p></div>
-          <div class="metier-feature"><h4>Contrôle qualité continu</h4><p>Vérification systématique de la conformité des travaux aux plans, aux cahiers des charges et aux normes en vigueur à chaque étape du chantier.</p></div>
-          <div class="metier-feature"><h4>Reporting client régulier</h4><p>Rapports hebdomadaires avec photos, tableaux d'avancement et alertes sur les points critiques, transmis directement sur votre espace client dédié.</p></div>
-          <div class="metier-feature"><h4>Gestion administrative</h4><p>Suivi des contrats, vérification des situations de travaux, gestion des réserves et levée de réserves lors de la réception du chantier.</p></div>
+          <div class="metier-feature"><h3>Coordination multi-entreprises</h3><p>Planification et séquençage précis de l'intervention de chaque corps de métier pour éviter les conflits de planning et les temps morts coûteux.</p></div>
+          <div class="metier-feature"><h3>Contrôle qualité continu</h3><p>Vérification systématique de la conformité des travaux aux plans, aux cahiers des charges et aux normes en vigueur à chaque étape du chantier.</p></div>
+          <div class="metier-feature"><h3>Reporting client régulier</h3><p>Rapports hebdomadaires avec photos, tableaux d'avancement et alertes sur les points critiques, transmis directement sur votre espace client dédié.</p></div>
+          <div class="metier-feature"><h3>Gestion administrative</h3><p>Suivi des contrats, vérification des situations de travaux, gestion des réserves et levée de réserves lors de la réception du chantier.</p></div>
         </div>
-        <a href="../contact.html" class="btn btn-accent" style="margin-top:1.5rem;">Demander un devis gratuit</a>
+        <a href="../contact.html" class="btn btn-accent mt-1-5">Demander un devis gratuit</a>
       </div>
       <div class="reveal from-right">
-        <img alt="Conducteur de travaux vérifiant les plans sur un chantier de rénovation" style="width:100%;border-radius:var(--radius-lg);object-fit:cover;aspect-ratio:4/3;box-shadow:var(--shadow-lg);" src="https://images.unsplash.com/photo-1772442198624-4fc4d7281e89?auto=format&amp;fit=crop&amp;w=800&amp;q=80" srcset="https://images.unsplash.com/photo-1772442198624-4fc4d7281e89?auto=format&amp;fit=crop&amp;w=480&amp;q=80 480w, https://images.unsplash.com/photo-1772442198624-4fc4d7281e89?auto=format&amp;fit=crop&amp;w=800&amp;q=80 800w, https://images.unsplash.com/photo-1772442198624-4fc4d7281e89?auto=format&amp;fit=crop&amp;w=1200&amp;q=80 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw" width="1200" height="900" loading="lazy" decoding="async">
+        <img class="metier-intro-img" alt="Conducteur de travaux vérifiant les plans sur un chantier de rénovation" src="https://images.unsplash.com/photo-1772442198624-4fc4d7281e89?auto=format&amp;fit=crop&amp;w=800&amp;q=80" srcset="https://images.unsplash.com/photo-1772442198624-4fc4d7281e89?auto=format&amp;fit=crop&amp;w=480&amp;q=80 480w, https://images.unsplash.com/photo-1772442198624-4fc4d7281e89?auto=format&amp;fit=crop&amp;w=800&amp;q=80 800w, https://images.unsplash.com/photo-1772442198624-4fc4d7281e89?auto=format&amp;fit=crop&amp;w=1200&amp;q=80 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw" width="1200" height="900" loading="lazy" decoding="async">
       </div>
     </div>
   </div>
@@ -155,35 +154,35 @@
   <div class="container">
     <div class="section-header text-center reveal">
       <span class="label">Nos interventions</span>
-      <h2 style="color:var(--white);">Notre mission à vos côtés</h2>
+      <h2 class="text-white">Notre mission à vos côtés</h2>
       <div class="divider"></div>
     </div>
     <div class="grid-3 stagger">
-      <div class="card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);">
+      <div class="card card--dark">
         <div class="card-body">
           <div class="card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
           </div>
-          <h3 style="color:var(--white);">Coordination</h3>
-          <p style="color:rgba(255,255,255,0.65);">Nous établissons le planning général du chantier et coordonnons l'ensemble des corps de métier : démolition, gros œuvre, électricité, plomberie, cloisons, revêtements et finitions. Chaque entreprise reçoit ses instructions d'intervention à la bonne date, avec les informations nécessaires pour démarrer sans attendre ni bloquer les autres.</p>
+          <h3 class="text-white">Coordination</h3>
+          <p class="text-on-dark">Nous établissons le planning général du chantier et coordonnons l'ensemble des corps de métier : démolition, gros œuvre, électricité, plomberie, cloisons, revêtements et finitions. Chaque entreprise reçoit ses instructions d'intervention à la bonne date, avec les informations nécessaires pour démarrer sans attendre ni bloquer les autres.</p>
         </div>
       </div>
-      <div class="card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);">
+      <div class="card card--dark">
         <div class="card-body">
           <div class="card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
           </div>
-          <h3 style="color:var(--white);">Contrôle qualité</h3>
-          <p style="color:rgba(255,255,255,0.65);">Notre conducteur de travaux inspecte chaque prestation avant de valider le passage à l'étape suivante. Niveaux, alignements, étanchéité, conformité aux normes : rien n'est laissé au hasard. Les non-conformités sont signalées immédiatement à l'entreprise concernée et consignées dans un procès-verbal pour assurer un suivi rigoureux.</p>
+          <h3 class="text-white">Contrôle qualité</h3>
+          <p class="text-on-dark">Notre conducteur de travaux inspecte chaque prestation avant de valider le passage à l'étape suivante. Niveaux, alignements, étanchéité, conformité aux normes : rien n'est laissé au hasard. Les non-conformités sont signalées immédiatement à l'entreprise concernée et consignées dans un procès-verbal pour assurer un suivi rigoureux.</p>
         </div>
       </div>
-      <div class="card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);">
+      <div class="card card--dark">
         <div class="card-body">
           <div class="card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
           </div>
-          <h3 style="color:var(--white);">Reporting client</h3>
-          <p style="color:rgba(255,255,255,0.65);">Chaque semaine, vous recevez un rapport d'avancement illustré de photos et d'un tableau de bord synthétique (tâches terminées, en cours, à venir, alertes budgétaires). Vous restez maître de votre chantier sans avoir à vous y rendre quotidiennement. En fin de travaux, nous organisons la réception formelle et la levée de toutes les réserves.</p>
+          <h3 class="text-white">Reporting client</h3>
+          <p class="text-on-dark">Chaque semaine, vous recevez un rapport d'avancement illustré de photos et d'un tableau de bord synthétique (tâches terminées, en cours, à venir, alertes budgétaires). Vous restez maître de votre chantier sans avoir à vous y rendre quotidiennement. En fin de travaux, nous organisons la réception formelle et la levée de toutes les réserves.</p>
         </div>
       </div>
     </div>
@@ -330,8 +329,7 @@
 
     <div class="footer-bottom">
       <p>&copy; <span data-year>2025</span> VIDA Habitat. Tous droits réservés.</p>
-      <!-- PLACEHOLDER : pages légales à créer -->
-      <p><a href="#">Mentions légales</a> · <a href="#">Politique de confidentialité</a></p>
+      <p><a href="../mentions-legales.html">Mentions légales</a> · <a href="../confidentialite.html">Politique de confidentialité</a></p>
     </div>
   </div>
 </footer>

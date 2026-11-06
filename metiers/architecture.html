@@ -48,9 +48,8 @@
   }
   </script>
   <!-- @seo:end -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="preload" href="../fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/playfair-display-latin.woff2" as="font" type="font/woff2" crossorigin>
   <script>document.documentElement.classList.add('js')</script>
   <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -135,7 +134,7 @@
         Compétence Signature
       </div>
       <p>L'Architecture est au cœur de l'ADN de VIDA Habitat — chaque projet de rénovation bénéficie d'une réflexion architecturale intégrée, des plans 2D aux modélisations 3D.</p>
-      <a href="#plans" class="btn btn-accent" style="font-size:0.75rem;padding:0.6rem 1.5rem;">Voir nos plans 2D/3D</a>
+      <a href="#plans" class="btn btn-accent btn-sm">Voir nos plans 2D/3D</a>
     </div>
   </div>
 </div>
@@ -148,17 +147,17 @@
         <span class="label">Notre expertise</span>
         <h2>Concevoir et réaliser des espaces qui vous ressemblent</h2>
         <p>L'architecture n'est pas un luxe réservé aux grandes constructions neuves : elle est au cœur de toute rénovation réussie. Bien concevoir un espace avant de le construire, c'est gagner du temps, de l'argent et s'assurer que le résultat final correspond exactement à vos attentes. VIDA Habitat s'appuie sur un réseau d'architectes et de décorateurs d'intérieur partenaires pour vous offrir une prestation architecturale complète, intégrée à votre chantier de rénovation.</p>
-        <p style="margin-top:1rem;">De l'esquisse initiale aux plans d'exécution, en passant par la modélisation 3D et le dépôt des autorisations administratives, nous gérons l'ensemble de la dimension architecturale de votre projet. Notre approche est collaborative : vous êtes au centre de chaque décision de conception, guidé par des professionnels qui traduisent vos idées en projets réalisables et cohérents.</p>
+        <p class="mt-1">De l'esquisse initiale aux plans d'exécution, en passant par la modélisation 3D et le dépôt des autorisations administratives, nous gérons l'ensemble de la dimension architecturale de votre projet. Notre approche est collaborative : vous êtes au centre de chaque décision de conception, guidé par des professionnels qui traduisent vos idées en projets réalisables et cohérents.</p>
         <div class="metier-features">
-          <div class="metier-feature"><h4>Conception &amp; plans d'exécution</h4><p>Levés de plans existants, esquisses de réaménagement, plans cotés d'architecte et plans d'exécution conformes aux exigences des entreprises.</p></div>
-          <div class="metier-feature"><h4>Modélisation 3D &amp; rendus</h4><p>Visualisation photoréaliste de votre futur espace avant les travaux pour valider chaque choix esthétique et fonctionnel en toute sérénité.</p></div>
-          <div class="metier-feature"><h4>Permis de construire</h4><p>Constitution des dossiers de permis de construire et de déclaration préalable, suivi des délais d'instruction et liaison avec les services d'urbanisme.</p></div>
-          <div class="metier-feature"><h4>Optimisation des espaces</h4><p>Réorganisation fonctionnelle du plan pour améliorer la circulation, la luminosité naturelle et la polyvalence des pièces sans nécessairement agrandir.</p></div>
+          <div class="metier-feature"><h3>Conception &amp; plans d'exécution</h3><p>Levés de plans existants, esquisses de réaménagement, plans cotés d'architecte et plans d'exécution conformes aux exigences des entreprises.</p></div>
+          <div class="metier-feature"><h3>Modélisation 3D &amp; rendus</h3><p>Visualisation photoréaliste de votre futur espace avant les travaux pour valider chaque choix esthétique et fonctionnel en toute sérénité.</p></div>
+          <div class="metier-feature"><h3>Permis de construire</h3><p>Constitution des dossiers de permis de construire et de déclaration préalable, suivi des délais d'instruction et liaison avec les services d'urbanisme.</p></div>
+          <div class="metier-feature"><h3>Optimisation des espaces</h3><p>Réorganisation fonctionnelle du plan pour améliorer la circulation, la luminosité naturelle et la polyvalence des pièces sans nécessairement agrandir.</p></div>
         </div>
-        <a href="../contact.html" class="btn btn-accent" style="margin-top:1.5rem;">Demander un devis gratuit</a>
+        <a href="../contact.html" class="btn btn-accent mt-1-5">Demander un devis gratuit</a>
       </div>
       <div class="reveal from-right">
-        <img alt="Architecte travaillant sur des plans de rénovation" style="width:100%;border-radius:var(--radius-lg);object-fit:cover;aspect-ratio:4/3;box-shadow:var(--shadow-lg);" src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&amp;fit=crop&amp;w=800&amp;q=80" srcset="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&amp;fit=crop&amp;w=480&amp;q=80 480w, https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&amp;fit=crop&amp;w=800&amp;q=80 800w, https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&amp;fit=crop&amp;w=1200&amp;q=80 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw" width="1200" height="900" loading="lazy" decoding="async">
+        <img class="metier-intro-img" alt="Architecte travaillant sur des plans de rénovation" src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&amp;fit=crop&amp;w=800&amp;q=80" srcset="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&amp;fit=crop&amp;w=480&amp;q=80 480w, https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&amp;fit=crop&amp;w=800&amp;q=80 800w, https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&amp;fit=crop&amp;w=1200&amp;q=80 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw" width="1200" height="900" loading="lazy" decoding="async">
       </div>
     </div>
   </div>
@@ -169,35 +168,35 @@
   <div class="container">
     <div class="section-header text-center reveal">
       <span class="label">Nos interventions</span>
-      <h2 style="color:var(--white);">Nos prestations architecturales</h2>
+      <h2 class="text-white">Nos prestations architecturales</h2>
       <div class="divider"></div>
     </div>
     <div class="grid-3 stagger">
-      <div class="card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);">
+      <div class="card card--dark">
         <div class="card-body">
           <div class="card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
           </div>
-          <h3 style="color:var(--white);">Conception &amp; Plans</h3>
-          <p style="color:rgba(255,255,255,0.65);">Notre équipe architecturale réalise l'ensemble des documents graphiques nécessaires à votre projet : relevé de l'existant, plans de démolition, plans d'aménagement, plans de synthèse des réseaux, coupes et élévations, détails de menuiseries. Ces documents servent de base aux entreprises pour chiffrer précisément les travaux et les réaliser conformément à vos souhaits.</p>
+          <h3 class="text-white">Conception &amp; Plans</h3>
+          <p class="text-on-dark">Notre équipe architecturale réalise l'ensemble des documents graphiques nécessaires à votre projet : relevé de l'existant, plans de démolition, plans d'aménagement, plans de synthèse des réseaux, coupes et élévations, détails de menuiseries. Ces documents servent de base aux entreprises pour chiffrer précisément les travaux et les réaliser conformément à vos souhaits.</p>
         </div>
       </div>
-      <div class="card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);">
+      <div class="card card--dark">
         <div class="card-body">
           <div class="card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6"/><path d="M9 15l3 3 3-3"/></svg>
           </div>
-          <h3 style="color:var(--white);">Permis &amp; Démarches</h3>
-          <p style="color:rgba(255,255,255,0.65);">Naviguer dans les règles d'urbanisme locales et les procédures administratives peut être complexe. Nous constituons à votre place les dossiers de permis de construire, d'autorisation de travaux ou de déclaration préalable, en Haute-Savoie. Nous assurons le suivi de l'instruction jusqu'à l'obtention de l'autorisation et vous alertons sur les délais à respecter.</p>
+          <h3 class="text-white">Permis &amp; Démarches</h3>
+          <p class="text-on-dark">Naviguer dans les règles d'urbanisme locales et les procédures administratives peut être complexe. Nous constituons à votre place les dossiers de permis de construire, d'autorisation de travaux ou de déclaration préalable, en Haute-Savoie. Nous assurons le suivi de l'instruction jusqu'à l'obtention de l'autorisation et vous alertons sur les délais à respecter.</p>
         </div>
       </div>
-      <div class="card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);">
+      <div class="card card--dark">
         <div class="card-body">
           <div class="card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
           </div>
-          <h3 style="color:var(--white);">Maîtrise d'œuvre</h3>
-          <p style="color:rgba(255,255,255,0.65);">La maîtrise d'œuvre consiste à piloter techniquement et administrativement la réalisation des travaux, depuis le cahier des charges jusqu'à la réception. Nous sélectionnons les meilleures entreprises pour chaque lot, analysons les offres de prix, établissons les marchés de travaux, organisons les réunions de chantier et veillons à la qualité d'exécution tout au long du chantier.</p>
+          <h3 class="text-white">Maîtrise d'œuvre</h3>
+          <p class="text-on-dark">La maîtrise d'œuvre consiste à piloter techniquement et administrativement la réalisation des travaux, depuis le cahier des charges jusqu'à la réception. Nous sélectionnons les meilleures entreprises pour chaque lot, analysons les offres de prix, établissons les marchés de travaux, organisons les réunions de chantier et veillons à la qualité d'exécution tout au long du chantier.</p>
         </div>
       </div>
     </div>
@@ -215,14 +214,14 @@
     </div>
 
     <!-- Plan 2D -->
-    <div class="plan-block reveal" style="margin-bottom: 5rem;">
+    <div class="plan-block reveal mb-5">
       <div class="plan-block-header">
         <div>
           <span class="label">Plan 2D</span>
-          <h3 style="margin-top:0.5rem;">Plan d'appartement type – T3</h3>
+          <h3 class="mt-05">Plan d'appartement type – T3</h3>
         </div>
       </div>
-      <div class="plan-svg-box" style="aspect-ratio:740/540;">
+      <div class="plan-svg-box plan-svg-box--t3">
         <div class="photo-placeholder"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>Exemple illustratif · À remplacer par vos plans</div>
       </div>
       <p class="plan-note">Vos plans seront établis sur mesure par nos architectes partenaires selon les dimensions exactes de votre bien et vos souhaits.</p>
@@ -233,7 +232,7 @@
       <div class="plan-block-header">
         <div>
           <span class="label">Modélisation 3D</span>
-          <h3 style="margin-top:0.5rem;">Rendus &amp; Visualisations architecturales</h3>
+          <h3 class="mt-05">Rendus &amp; Visualisations architecturales</h3>
         </div>
       </div>
       <div class="metier-gallery stagger">
@@ -251,7 +250,7 @@
   <div class="container">
     <div class="section-header text-center reveal">
       <span class="label">Réalisations</span>
-      <h2 style="color:var(--white);">Aperçu de nos chantiers</h2>
+      <h2 class="text-white">Aperçu de nos chantiers</h2>
       <div class="divider"></div>
     </div>
     <div class="metier-gallery stagger">
@@ -386,8 +385,7 @@
 
     <div class="footer-bottom">
       <p>&copy; <span data-year>2025</span> VIDA Habitat. Tous droits réservés.</p>
-      <!-- PLACEHOLDER : pages légales à créer -->
-      <p><a href="#">Mentions légales</a> · <a href="#">Politique de confidentialité</a></p>
+      <p><a href="../mentions-legales.html">Mentions légales</a> · <a href="../confidentialite.html">Politique de confidentialité</a></p>
     </div>
   </div>
 </footer>

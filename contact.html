@@ -42,9 +42,8 @@
   }
   </script>
   <!-- @seo:end -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="preload" href="fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/playfair-display-latin.woff2" as="font" type="font/woff2" crossorigin>
   <script>document.documentElement.classList.add('js')</script>
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -130,12 +129,12 @@
       <!-- Info -->
       <div class="reveal from-left">
         <span class="label">Nos coordonnées</span>
-        <h2 style="margin: 1rem 0 2rem;">Nous sommes à votre écoute</h2>
+        <h2 class="heading-spaced">Nous sommes à votre écoute</h2>
 
         <div class="contact-detail">
           <div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
           <div class="contact-detail-text">
-            <h4>Zone d'intervention</h4>
+            <h3>Zone d'intervention</h3>
             <p>Annemasse, Thonon-les-Bains, Évian-les-Bains et alentours<br>Haute-Savoie (74) – France</p>
           </div>
         </div>
@@ -143,7 +142,7 @@
         <div class="contact-detail">
           <div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg></div>
           <div class="contact-detail-text">
-            <h4>Téléphone</h4>
+            <h3>Téléphone</h3>
             <a href="tel:+33450000000">+33 4 50 00 00 00</a>
           </div>
         </div>
@@ -151,7 +150,7 @@
         <div class="contact-detail">
           <div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
           <div class="contact-detail-text">
-            <h4>Email</h4>
+            <h3>Email</h3>
             <a href="mailto:contact@vidahabitat.fr">contact@vidahabitat.fr</a>
           </div>
         </div>
@@ -159,7 +158,7 @@
         <div class="contact-detail">
           <div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg></div>
           <div class="contact-detail-text">
-            <h4>Horaires d'ouverture</h4>
+            <h3>Horaires d'ouverture</h3>
             <p>Lun – Ven : 08:00 – 18:00<br>Samedi : 09:00 – 13:00</p>
           </div>
         </div>
@@ -182,8 +181,8 @@
       <div class="reveal from-right">
         <div class="form-card" id="devis">
           <span class="label">Formulaire de contact</span>
-          <h3 class="form-title" style="margin-top: 1rem;">Demandez votre devis gratuit</h3>
-          <p style="color: var(--text-light); font-size: 0.88rem; margin-bottom: 2rem;">Décrivez votre projet et nous vous recontactons sous 24h pour organiser une visite gratuite.</p>
+          <h3 class="form-title mt-1">Demandez votre devis gratuit</h3>
+          <p class="form-intro">Décrivez votre projet et nous vous recontactons sous 24h pour organiser une visite gratuite.</p>
 
           <form class="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
             <!-- ⚠ PLACEHOLDER FORMULAIRE : clé d'accès Web3Forms (https://web3forms.com) à coller dans value="".
@@ -254,7 +253,7 @@
 
             <div class="form-consent">
               <input type="checkbox" id="consentement" name="consentement" value="oui" required aria-describedby="consentement-error">
-              <label for="consentement">J'accepte que les informations saisies soient utilisées pour traiter ma demande et me recontacter. <!-- PLACEHOLDER : lien vers la politique de confidentialité --><a href="#">Politique de confidentialité</a> <span aria-hidden="true">*</span></label>
+              <label for="consentement">J'accepte que les informations saisies soient utilisées pour traiter ma demande et me recontacter. <a href="confidentialite.html">Politique de confidentialité</a> <span aria-hidden="true">*</span></label>
               <p class="field-error" id="consentement-error"></p>
             </div>
 
@@ -278,22 +277,22 @@
 <!-- ═══ REINSURANCE ═══ -->
 <section class="section-sm bg-light">
   <div class="container">
-    <div class="grid-4 stagger" style="text-align:center;">
+    <div class="grid-4 stagger text-center">
       <div>
-        <div style="font-family: var(--font-serif);font-size:2.5rem;font-weight:700;color:var(--accent-strong);">24h</div>
-        <p style="font-size:.88rem;color:var(--text-mid);margin:0 auto;">Délai de réponse garanti</p>
+        <div class="reassurance-figure">24h</div>
+        <p class="reassurance-text">Délai de réponse garanti</p>
       </div>
       <div>
-        <div style="font-family: var(--font-serif);font-size:2.5rem;font-weight:700;color:var(--accent-strong);">100%</div>
-        <p style="font-size:.88rem;color:var(--text-mid);margin:0 auto;">Devis gratuit et sans engagement</p>
+        <div class="reassurance-figure">100%</div>
+        <p class="reassurance-text">Devis gratuit et sans engagement</p>
       </div>
       <div>
-        <div style="font-family: var(--font-serif);font-size:2.5rem;font-weight:700;color:var(--accent-strong);">1</div>
-        <p style="font-size:.88rem;color:var(--text-mid);margin:0 auto;">Pays d'intervention</p>
+        <div class="reassurance-figure">1</div>
+        <p class="reassurance-text">Pays d'intervention</p>
       </div>
       <div>
-        <div style="font-family: var(--font-serif);font-size:2.5rem;font-weight:700;color:var(--accent-strong);">15+</div>
-        <p style="font-size:.88rem;color:var(--text-mid);margin:0 auto;">Années d'expertise</p>
+        <div class="reassurance-figure">15+</div>
+        <p class="reassurance-text">Années d'expertise</p>
       </div>
     </div>
   </div>
@@ -373,8 +372,7 @@
 
     <div class="footer-bottom">
       <p>&copy; <span data-year>2025</span> VIDA Habitat. Tous droits réservés.</p>
-      <!-- PLACEHOLDER : pages légales à créer -->
-      <p><a href="#">Mentions légales</a> · <a href="#">Politique de confidentialité</a></p>
+      <p><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Politique de confidentialité</a></p>
     </div>
   </div>
 </footer>

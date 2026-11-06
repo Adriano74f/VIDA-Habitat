@@ -48,9 +48,8 @@
   }
   </script>
   <!-- @seo:end -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="preload" href="../fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/playfair-display-latin.woff2" as="font" type="font/woff2" crossorigin>
   <script>document.documentElement.classList.add('js')</script>
   <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -134,17 +133,17 @@
         <span class="label">Notre expertise</span>
         <h2>La couleur et la matière au service de vos espaces</h2>
         <p>La peinture est la dernière touche d'une rénovation, mais aussi la première chose que l'on remarque. Une belle finition transforme radicalement l'atmosphère d'une pièce, met en valeur l'architecture et reflète la personnalité des occupants. Chez VIDA Habitat, nos peintres décorateurs apportent un soin méticuleux à chaque surface, de la préparation des supports jusqu'au dernier coup de pinceau.</p>
-        <p style="margin-top:1rem;">Au-delà de la peinture classique, nous maîtrisons l'ensemble des techniques décoratives contemporaines et traditionnelles : stucco veneziano, béton ciré mural, boiseries laquées, papiers peints panoramiques, effets matières et dorures à la feuille. Chaque projet est l'occasion de créer un espace unique, fidèle à votre vision.</p>
+        <p class="mt-1">Au-delà de la peinture classique, nous maîtrisons l'ensemble des techniques décoratives contemporaines et traditionnelles : stucco veneziano, béton ciré mural, boiseries laquées, papiers peints panoramiques, effets matières et dorures à la feuille. Chaque projet est l'occasion de créer un espace unique, fidèle à votre vision.</p>
         <div class="metier-features">
-          <div class="metier-feature"><h4>Préparation des supports</h4><p>Rebouchage, ponçage, impression et enduisage : nous préparons chaque surface avec rigueur pour garantir une adhérence parfaite et un rendu impeccable.</p></div>
-          <div class="metier-feature"><h4>Stucco &amp; enduits décoratifs</h4><p>Application artisanale de stucco veneziano, tadelakt et enduits à la chaux pour des murs aux textures naturelles et vivantes, uniques et durables.</p></div>
-          <div class="metier-feature"><h4>Papiers peints &amp; revêtements</h4><p>Pose de papiers peints vinyle, intissé, panoramique et tissu mural. Conseil en motifs et coordination avec le reste de la décoration intérieure.</p></div>
-          <div class="metier-feature"><h4>Peinture extérieure</h4><p>Ravalement de façades, peinture de menuiseries bois et métal avec des peintures adaptées aux conditions climatiques alpines et aux normes locales.</p></div>
+          <div class="metier-feature"><h3>Préparation des supports</h3><p>Rebouchage, ponçage, impression et enduisage : nous préparons chaque surface avec rigueur pour garantir une adhérence parfaite et un rendu impeccable.</p></div>
+          <div class="metier-feature"><h3>Stucco &amp; enduits décoratifs</h3><p>Application artisanale de stucco veneziano, tadelakt et enduits à la chaux pour des murs aux textures naturelles et vivantes, uniques et durables.</p></div>
+          <div class="metier-feature"><h3>Papiers peints &amp; revêtements</h3><p>Pose de papiers peints vinyle, intissé, panoramique et tissu mural. Conseil en motifs et coordination avec le reste de la décoration intérieure.</p></div>
+          <div class="metier-feature"><h3>Peinture extérieure</h3><p>Ravalement de façades, peinture de menuiseries bois et métal avec des peintures adaptées aux conditions climatiques alpines et aux normes locales.</p></div>
         </div>
-        <a href="../contact.html" class="btn btn-accent" style="margin-top:1.5rem;">Demander un devis gratuit</a>
+        <a href="../contact.html" class="btn btn-accent mt-1-5">Demander un devis gratuit</a>
       </div>
       <div class="reveal from-right">
-        <img alt="Artisan appliquant un enduit au mur à la taloche" style="width:100%;border-radius:var(--radius-lg);object-fit:cover;aspect-ratio:4/3;box-shadow:var(--shadow-lg);" src="https://images.unsplash.com/photo-1761986757577-140af8859587?auto=format&amp;fit=crop&amp;w=800&amp;q=80" srcset="https://images.unsplash.com/photo-1761986757577-140af8859587?auto=format&amp;fit=crop&amp;w=480&amp;q=80 480w, https://images.unsplash.com/photo-1761986757577-140af8859587?auto=format&amp;fit=crop&amp;w=800&amp;q=80 800w, https://images.unsplash.com/photo-1761986757577-140af8859587?auto=format&amp;fit=crop&amp;w=1200&amp;q=80 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw" width="1200" height="900" loading="lazy" decoding="async">
+        <img class="metier-intro-img" alt="Artisan appliquant un enduit au mur à la taloche" src="https://images.unsplash.com/photo-1761986757577-140af8859587?auto=format&amp;fit=crop&amp;w=800&amp;q=80" srcset="https://images.unsplash.com/photo-1761986757577-140af8859587?auto=format&amp;fit=crop&amp;w=480&amp;q=80 480w, https://images.unsplash.com/photo-1761986757577-140af8859587?auto=format&amp;fit=crop&amp;w=800&amp;q=80 800w, https://images.unsplash.com/photo-1761986757577-140af8859587?auto=format&amp;fit=crop&amp;w=1200&amp;q=80 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw" width="1200" height="900" loading="lazy" decoding="async">
       </div>
     </div>
   </div>
@@ -155,35 +154,35 @@
   <div class="container">
     <div class="section-header text-center reveal">
       <span class="label">Nos interventions</span>
-      <h2 style="color:var(--white);">Nos prestations en peinture &amp; décoration</h2>
+      <h2 class="text-white">Nos prestations en peinture &amp; décoration</h2>
       <div class="divider"></div>
     </div>
     <div class="grid-3 stagger">
-      <div class="card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);">
+      <div class="card card--dark">
         <div class="card-body">
           <div class="card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           </div>
-          <h3 style="color:var(--white);">Peinture intérieure</h3>
-          <p style="color:rgba(255,255,255,0.65);">De la remise en état simple à la transformation complète, nous peignons murs, plafonds, boiseries et menuiseries avec des peintures de qualité professionnelle, exemptes de COV, adaptées à chaque pièce (cuisine, salle de bain, chambre). Notre palette de teintes comprend plus de 5 000 couleurs pour trouver exactement l'harmonie que vous recherchez.</p>
+          <h3 class="text-white">Peinture intérieure</h3>
+          <p class="text-on-dark">De la remise en état simple à la transformation complète, nous peignons murs, plafonds, boiseries et menuiseries avec des peintures de qualité professionnelle, exemptes de COV, adaptées à chaque pièce (cuisine, salle de bain, chambre). Notre palette de teintes comprend plus de 5 000 couleurs pour trouver exactement l'harmonie que vous recherchez.</p>
         </div>
       </div>
-      <div class="card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);">
+      <div class="card card--dark">
         <div class="card-body">
           <div class="card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M2 9h20"/><path d="M8 3v6"/></svg>
           </div>
-          <h3 style="color:var(--white);">Peinture extérieure</h3>
-          <p style="color:rgba(255,255,255,0.65);">Ravalement de façades en crépi, béton, bois ou pierre. Nous préparons soigneusement les supports (nettoyage haute pression, traitement anti-mousse, rebouchage des fissures) avant d'appliquer des peintures façade respirantes et résistantes aux UV et au gel, pour une protection durable contre les intempéries de la région.</p>
+          <h3 class="text-white">Peinture extérieure</h3>
+          <p class="text-on-dark">Ravalement de façades en crépi, béton, bois ou pierre. Nous préparons soigneusement les supports (nettoyage haute pression, traitement anti-mousse, rebouchage des fissures) avant d'appliquer des peintures façade respirantes et résistantes aux UV et au gel, pour une protection durable contre les intempéries de la région.</p>
         </div>
       </div>
-      <div class="card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);">
+      <div class="card card--dark">
         <div class="card-body">
           <div class="card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
           </div>
-          <h3 style="color:var(--white);">Enduits décoratifs</h3>
-          <p style="color:rgba(255,255,255,0.65);">Le stucco veneziano, le tadelakt et les enduits à la chaux créent des murs aux textures profondes et vivantes qui ne ressemblent à aucun autre revêtement. Nos équipes maîtrisent ces techniques ancestrales et contemporaines pour réaliser des finitions uniques, naturelles et durables, aussi bien dans un intérieur classique que dans un loft moderne.</p>
+          <h3 class="text-white">Enduits décoratifs</h3>
+          <p class="text-on-dark">Le stucco veneziano, le tadelakt et les enduits à la chaux créent des murs aux textures profondes et vivantes qui ne ressemblent à aucun autre revêtement. Nos équipes maîtrisent ces techniques ancestrales et contemporaines pour réaliser des finitions uniques, naturelles et durables, aussi bien dans un intérieur classique que dans un loft moderne.</p>
         </div>
       </div>
     </div>
@@ -330,8 +329,7 @@
 
     <div class="footer-bottom">
       <p>&copy; <span data-year>2025</span> VIDA Habitat. Tous droits réservés.</p>
-      <!-- PLACEHOLDER : pages légales à créer -->
-      <p><a href="#">Mentions légales</a> · <a href="#">Politique de confidentialité</a></p>
+      <p><a href="../mentions-legales.html">Mentions légales</a> · <a href="../confidentialite.html">Politique de confidentialité</a></p>
     </div>
   </div>
 </footer>

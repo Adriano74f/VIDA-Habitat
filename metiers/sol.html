@@ -48,9 +48,8 @@
   }
   </script>
   <!-- @seo:end -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="preload" href="../fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/playfair-display-latin.woff2" as="font" type="font/woff2" crossorigin>
   <script>document.documentElement.classList.add('js')</script>
   <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -134,17 +133,17 @@
         <span class="label">Notre expertise</span>
         <h2>Le sol, fondation de chaque espace de vie</h2>
         <p>Le revêtement de sol est bien plus qu'un simple choix esthétique : il définit l'ambiance d'une pièce, garantit le confort thermique et acoustique, et doit résister aux contraintes du quotidien pendant des décennies. Chez VIDA Habitat, nos poseurs qualifiés maîtrisent l'ensemble des techniques et matériaux pour vous offrir un résultat impeccable, durable et parfaitement adapté à vos usages.</p>
-        <p style="margin-top:1rem;">De la préparation du support jusqu'aux finitions, chaque étape est réalisée dans les règles de l'art. Nous sélectionnons des matériaux de premier choix auprès de fournisseurs européens reconnus, du parquet massif chêne français au carrelage grand format italien en passant par le béton ciré artisanal et les nouvelles générations de vinyle LVT.</p>
+        <p class="mt-1">De la préparation du support jusqu'aux finitions, chaque étape est réalisée dans les règles de l'art. Nous sélectionnons des matériaux de premier choix auprès de fournisseurs européens reconnus, du parquet massif chêne français au carrelage grand format italien en passant par le béton ciré artisanal et les nouvelles générations de vinyle LVT.</p>
         <div class="metier-features">
-          <div class="metier-feature"><h4>Parquet massif &amp; contrecollé</h4><p>Pose flottante, collée ou clouée selon le support. Ponçage et vitrification sur parquet existant pour lui redonner sa splendeur d'origine.</p></div>
-          <div class="metier-feature"><h4>Carrelage grand format</h4><p>Pose de grès cérame, faïence et pierre naturelle en tous formats, y compris les grandes dalles jusqu'à 120 × 260 cm, avec joint rectifié.</p></div>
-          <div class="metier-feature"><h4>Béton ciré &amp; résines</h4><p>Application artisanale de béton ciré et résines époxy pour des sols contemporains, sans joint, faciles d'entretien et très résistants.</p></div>
-          <div class="metier-feature"><h4>Vinyle LVT &amp; stratifié</h4><p>Solutions économiques et esthétiques pour logements locatifs ou espaces très fréquentés, avec excellentes performances acoustiques.</p></div>
+          <div class="metier-feature"><h3>Parquet massif &amp; contrecollé</h3><p>Pose flottante, collée ou clouée selon le support. Ponçage et vitrification sur parquet existant pour lui redonner sa splendeur d'origine.</p></div>
+          <div class="metier-feature"><h3>Carrelage grand format</h3><p>Pose de grès cérame, faïence et pierre naturelle en tous formats, y compris les grandes dalles jusqu'à 120 × 260 cm, avec joint rectifié.</p></div>
+          <div class="metier-feature"><h3>Béton ciré &amp; résines</h3><p>Application artisanale de béton ciré et résines époxy pour des sols contemporains, sans joint, faciles d'entretien et très résistants.</p></div>
+          <div class="metier-feature"><h3>Vinyle LVT &amp; stratifié</h3><p>Solutions économiques et esthétiques pour logements locatifs ou espaces très fréquentés, avec excellentes performances acoustiques.</p></div>
         </div>
-        <a href="../contact.html" class="btn btn-accent" style="margin-top:1.5rem;">Demander un devis gratuit</a>
+        <a href="../contact.html" class="btn btn-accent mt-1-5">Demander un devis gratuit</a>
       </div>
       <div class="reveal from-right">
-        <img alt="Parquet en chêne posé dans un salon lumineux" style="width:100%;border-radius:var(--radius-lg);object-fit:cover;aspect-ratio:4/3;box-shadow:var(--shadow-lg);" src="https://images.unsplash.com/photo-1598718544285-7180f670198b?auto=format&amp;fit=crop&amp;w=800&amp;q=80" srcset="https://images.unsplash.com/photo-1598718544285-7180f670198b?auto=format&amp;fit=crop&amp;w=480&amp;q=80 480w, https://images.unsplash.com/photo-1598718544285-7180f670198b?auto=format&amp;fit=crop&amp;w=800&amp;q=80 800w, https://images.unsplash.com/photo-1598718544285-7180f670198b?auto=format&amp;fit=crop&amp;w=1200&amp;q=80 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw" width="1200" height="900" loading="lazy" decoding="async">
+        <img class="metier-intro-img" alt="Parquet en chêne posé dans un salon lumineux" src="https://images.unsplash.com/photo-1598718544285-7180f670198b?auto=format&amp;fit=crop&amp;w=800&amp;q=80" srcset="https://images.unsplash.com/photo-1598718544285-7180f670198b?auto=format&amp;fit=crop&amp;w=480&amp;q=80 480w, https://images.unsplash.com/photo-1598718544285-7180f670198b?auto=format&amp;fit=crop&amp;w=800&amp;q=80 800w, https://images.unsplash.com/photo-1598718544285-7180f670198b?auto=format&amp;fit=crop&amp;w=1200&amp;q=80 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw" width="1200" height="900" loading="lazy" decoding="async">
       </div>
     </div>
   </div>
@@ -155,35 +154,35 @@
   <div class="container">
     <div class="section-header text-center reveal">
       <span class="label">Nos interventions</span>
-      <h2 style="color:var(--white);">Nos spécialités en revêtements de sol</h2>
+      <h2 class="text-white">Nos spécialités en revêtements de sol</h2>
       <div class="divider"></div>
     </div>
     <div class="grid-3 stagger">
-      <div class="card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);">
+      <div class="card card--dark">
         <div class="card-body">
           <div class="card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>
           </div>
-          <h3 style="color:var(--white);">Parquet &amp; Bois</h3>
-          <p style="color:rgba(255,255,255,0.65);">Spécialistes du parquet massif, contrecollé et stratifié, nous vous accompagnons dans le choix de l'essence, du format et du mode de pose. Nous réalisons également la restauration de parquets anciens : ponçage, rebouchage, teinte et vitrification pour retrouver un sol comme neuf, avec tout le caractère du bois d'époque.</p>
+          <h3 class="text-white">Parquet &amp; Bois</h3>
+          <p class="text-on-dark">Spécialistes du parquet massif, contrecollé et stratifié, nous vous accompagnons dans le choix de l'essence, du format et du mode de pose. Nous réalisons également la restauration de parquets anciens : ponçage, rebouchage, teinte et vitrification pour retrouver un sol comme neuf, avec tout le caractère du bois d'époque.</p>
         </div>
       </div>
-      <div class="card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);">
+      <div class="card card--dark">
         <div class="card-body">
           <div class="card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
           </div>
-          <h3 style="color:var(--white);">Carrelage &amp; Pierre</h3>
-          <p style="color:rgba(255,255,255,0.65);">De la petite mosaïque à la grande dalle rectifiée, nos carreleurs posent l'ensemble des matériaux céramiques et lapidaires : grès cérame, marbre, travertin, ardoise, terrazzo. Chaque pose commence par une préparation soigneuse du support pour garantir planéité parfaite et adhérence durable, même dans les zones humides.</p>
+          <h3 class="text-white">Carrelage &amp; Pierre</h3>
+          <p class="text-on-dark">De la petite mosaïque à la grande dalle rectifiée, nos carreleurs posent l'ensemble des matériaux céramiques et lapidaires : grès cérame, marbre, travertin, ardoise, terrazzo. Chaque pose commence par une préparation soigneuse du support pour garantir planéité parfaite et adhérence durable, même dans les zones humides.</p>
         </div>
       </div>
-      <div class="card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);">
+      <div class="card card--dark">
         <div class="card-body">
           <div class="card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
           </div>
-          <h3 style="color:var(--white);">Béton ciré &amp; Vinyle</h3>
-          <p style="color:rgba(255,255,255,0.65);">Le béton ciré séduit par son esthétique minimaliste et son absence de joints. Nos applicateurs certifiés réalisent des finitions mats, satins ou brillants, dans toutes les teintes. En alternative économique, le vinyle LVT haut de gamme offre une excellente résistance à l'humidité et une isolation phonique remarquable, idéale pour les appartements.</p>
+          <h3 class="text-white">Béton ciré &amp; Vinyle</h3>
+          <p class="text-on-dark">Le béton ciré séduit par son esthétique minimaliste et son absence de joints. Nos applicateurs certifiés réalisent des finitions mats, satins ou brillants, dans toutes les teintes. En alternative économique, le vinyle LVT haut de gamme offre une excellente résistance à l'humidité et une isolation phonique remarquable, idéale pour les appartements.</p>
         </div>
       </div>
     </div>
@@ -330,8 +329,7 @@
 
     <div class="footer-bottom">
       <p>&copy; <span data-year>2025</span> VIDA Habitat. Tous droits réservés.</p>
-      <!-- PLACEHOLDER : pages légales à créer -->
-      <p><a href="#">Mentions légales</a> · <a href="#">Politique de confidentialité</a></p>
+      <p><a href="../mentions-legales.html">Mentions légales</a> · <a href="../confidentialite.html">Politique de confidentialité</a></p>
     </div>
   </div>
 </footer>

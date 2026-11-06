@@ -42,9 +42,8 @@
   }
   </script>
   <!-- @seo:end -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="preload" href="fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/playfair-display-latin.woff2" as="font" type="font/woff2" crossorigin>
   <script>document.documentElement.classList.add('js')</script>
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -124,9 +123,9 @@
 <section class="section-sm bg-light">
   <div class="container text-center reveal">
     <span class="label">Polyvalence &amp; Expertise</span>
-    <h2 style="margin: 1rem auto 1rem; max-width: 700px;">6 corps de métier, une seule entreprise</h2>
+    <h2 class="intro-title">6 corps de métier, une seule entreprise</h2>
     <div class="divider"></div>
-    <p style="margin: 0 auto; max-width: 70ch; color: var(--text-mid);">VIDA Habitat réunit sous un même toit toutes les équipes spécialisées nécessaires à votre projet. Plus besoin de coordonner plusieurs intervenants : nous gérons tout, de A à Z.</p>
+    <p class="intro-text">VIDA Habitat réunit sous un même toit toutes les équipes spécialisées nécessaires à votre projet. Plus besoin de coordonner plusieurs intervenants : nous gérons tout, de A à Z.</p>
   </div>
 </section>
 
@@ -216,7 +215,7 @@
       <span class="label">Votre projet</span>
       <h2>Un seul appel suffit</h2>
       <p>Dites-nous ce que vous souhaitez réaliser, nous mobilisons les experts qu'il faut, au bon moment.</p>
-      <div class="flex flex-center gap-1" style="flex-wrap:wrap;">
+      <div class="flex flex-center gap-1 flex-wrap">
         <a href="contact.html" class="btn btn-accent">Demander un devis</a>
         <a href="tel:+33450000000" class="btn btn-outline">+33 4 50 00 00 00</a>
       </div>
@@ -298,8 +297,7 @@
 
     <div class="footer-bottom">
       <p>&copy; <span data-year>2025</span> VIDA Habitat. Tous droits réservés.</p>
-      <!-- PLACEHOLDER : pages légales à créer -->
-      <p><a href="#">Mentions légales</a> · <a href="#">Politique de confidentialité</a></p>
+      <p><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Politique de confidentialité</a></p>
     </div>
   </div>
 </footer>

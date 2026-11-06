@@ -48,9 +48,8 @@
   }
   </script>
   <!-- @seo:end -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="preload" href="../fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/playfair-display-latin.woff2" as="font" type="font/woff2" crossorigin>
   <script>document.documentElement.classList.add('js')</script>
   <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -134,17 +133,17 @@
         <span class="label">Notre expertise</span>
         <h2>Des solutions thermiques et sanitaires sur mesure</h2>
         <p>Chez VIDA Habitat, notre équipe de techniciens certifiés prend en charge l'intégralité de vos projets de chauffage et de plomberie. De la conception à la mise en service, nous sélectionnons les équipements les plus performants et les mieux adaptés à votre bâtiment pour vous garantir confort, économies d'énergie et conformité réglementaire.</p>
-        <p style="margin-top:1rem;">Que vous souhaitiez remplacer une ancienne chaudière par une pompe à chaleur dernière génération, installer un plancher chauffant hydraulique, rénover entièrement votre réseau sanitaire ou simplement réparer une fuite urgente, nous intervenons avec réactivité et professionnalisme en Haute-Savoie.</p>
+        <p class="mt-1">Que vous souhaitiez remplacer une ancienne chaudière par une pompe à chaleur dernière génération, installer un plancher chauffant hydraulique, rénover entièrement votre réseau sanitaire ou simplement réparer une fuite urgente, nous intervenons avec réactivité et professionnalisme en Haute-Savoie.</p>
         <div class="metier-features">
-          <div class="metier-feature"><h4>Pompes à chaleur</h4><p>Installation de PAC air/eau et géothermiques avec dimensionnement précis pour une efficacité énergétique maximale.</p></div>
-          <div class="metier-feature"><h4>Plancher chauffant</h4><p>Pose de systèmes hydrauliques et électriques au sol, pour un confort homogène dans toutes vos pièces.</p></div>
-          <div class="metier-feature"><h4>VMC &amp; ventilation</h4><p>Installation et entretien de systèmes VMC double flux pour une qualité d'air intérieur optimale et une meilleure efficacité thermique.</p></div>
-          <div class="metier-feature"><h4>Plomberie sanitaire</h4><p>Création et rénovation complète de salles de bain, cuisines et réseaux d'eau chaude et froide selon les normes en vigueur.</p></div>
+          <div class="metier-feature"><h3>Pompes à chaleur</h3><p>Installation de PAC air/eau et géothermiques avec dimensionnement précis pour une efficacité énergétique maximale.</p></div>
+          <div class="metier-feature"><h3>Plancher chauffant</h3><p>Pose de systèmes hydrauliques et électriques au sol, pour un confort homogène dans toutes vos pièces.</p></div>
+          <div class="metier-feature"><h3>VMC &amp; ventilation</h3><p>Installation et entretien de systèmes VMC double flux pour une qualité d'air intérieur optimale et une meilleure efficacité thermique.</p></div>
+          <div class="metier-feature"><h3>Plomberie sanitaire</h3><p>Création et rénovation complète de salles de bain, cuisines et réseaux d'eau chaude et froide selon les normes en vigueur.</p></div>
         </div>
-        <a href="../contact.html" class="btn btn-accent" style="margin-top:1.5rem;">Demander un devis gratuit</a>
+        <a href="../contact.html" class="btn btn-accent mt-1-5">Demander un devis gratuit</a>
       </div>
       <div class="reveal from-right">
-        <img alt="Plombier installant une évacuation sous un lavabo" style="width:100%;border-radius:var(--radius-lg);object-fit:cover;aspect-ratio:4/3;box-shadow:var(--shadow-lg);" src="https://images.unsplash.com/photo-1676210134188-4c05dd172f89?auto=format&amp;fit=crop&amp;w=800&amp;q=80" srcset="https://images.unsplash.com/photo-1676210134188-4c05dd172f89?auto=format&amp;fit=crop&amp;w=480&amp;q=80 480w, https://images.unsplash.com/photo-1676210134188-4c05dd172f89?auto=format&amp;fit=crop&amp;w=800&amp;q=80 800w, https://images.unsplash.com/photo-1676210134188-4c05dd172f89?auto=format&amp;fit=crop&amp;w=1200&amp;q=80 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw" width="1200" height="900" loading="lazy" decoding="async">
+        <img class="metier-intro-img" alt="Plombier installant une évacuation sous un lavabo" src="https://images.unsplash.com/photo-1676210134188-4c05dd172f89?auto=format&amp;fit=crop&amp;w=800&amp;q=80" srcset="https://images.unsplash.com/photo-1676210134188-4c05dd172f89?auto=format&amp;fit=crop&amp;w=480&amp;q=80 480w, https://images.unsplash.com/photo-1676210134188-4c05dd172f89?auto=format&amp;fit=crop&amp;w=800&amp;q=80 800w, https://images.unsplash.com/photo-1676210134188-4c05dd172f89?auto=format&amp;fit=crop&amp;w=1200&amp;q=80 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw" width="1200" height="900" loading="lazy" decoding="async">
       </div>
     </div>
   </div>
@@ -155,35 +154,35 @@
   <div class="container">
     <div class="section-header text-center reveal">
       <span class="label">Nos interventions</span>
-      <h2 style="color:var(--white);">Ce que nous réalisons pour vous</h2>
+      <h2 class="text-white">Ce que nous réalisons pour vous</h2>
       <div class="divider"></div>
     </div>
     <div class="grid-3 stagger">
-      <div class="card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);">
+      <div class="card card--dark">
         <div class="card-body">
           <div class="card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a5 5 0 015 5c0 3-2 5.5-5 8-3-2.5-5-5-5-8a5 5 0 015-5z"/><path d="M12 22v-7"/><path d="M9 19h6"/></svg>
           </div>
-          <h3 style="color:var(--white);">Installation chauffage</h3>
-          <p style="color:rgba(255,255,255,0.65);">Pose et remplacement de chaudières gaz à condensation, chaudières mazout, pompes à chaleur air/eau et géothermiques. Nous gérons le dimensionnement, l'installation complète et la mise en service de votre nouveau système de chauffage, avec raccordement au réseau existant ou création d'un circuit entièrement neuf.</p>
+          <h3 class="text-white">Installation chauffage</h3>
+          <p class="text-on-dark">Pose et remplacement de chaudières gaz à condensation, chaudières mazout, pompes à chaleur air/eau et géothermiques. Nous gérons le dimensionnement, l'installation complète et la mise en service de votre nouveau système de chauffage, avec raccordement au réseau existant ou création d'un circuit entièrement neuf.</p>
         </div>
       </div>
-      <div class="card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);">
+      <div class="card card--dark">
         <div class="card-body">
           <div class="card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6"/><path d="M4.93 7.93l4.24 4.24"/><path d="M2 15h6"/><path d="M4.93 22.07l4.24-4.24"/><path d="M12 22v-6"/><path d="M19.07 22.07l-4.24-4.24"/><path d="M22 15h-6"/><path d="M19.07 7.93l-4.24 4.24"/></svg>
           </div>
-          <h3 style="color:var(--white);">Plomberie sanitaire</h3>
-          <p style="color:rgba(255,255,255,0.65);">Rénovation et création de salles de bain, cuisines équipées et buanderies. Nous posons l'ensemble des réseaux d'alimentation en eau chaude et froide, les évacuations, les équipements sanitaires (douche, baignoire, WC, lavabo) et les robinetteries, en veillant à l'étanchéité parfaite de chaque installation.</p>
+          <h3 class="text-white">Plomberie sanitaire</h3>
+          <p class="text-on-dark">Rénovation et création de salles de bain, cuisines équipées et buanderies. Nous posons l'ensemble des réseaux d'alimentation en eau chaude et froide, les évacuations, les équipements sanitaires (douche, baignoire, WC, lavabo) et les robinetteries, en veillant à l'étanchéité parfaite de chaque installation.</p>
         </div>
       </div>
-      <div class="card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);">
+      <div class="card card--dark">
         <div class="card-body">
           <div class="card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           </div>
-          <h3 style="color:var(--white);">Dépannage urgence</h3>
-          <p style="color:rgba(255,255,255,0.65);">Fuite d'eau, panne de chaudière, canalisation bouchée : notre équipe de dépannage intervient rapidement pour limiter les dégâts et rétablir le confort de votre logement. Nous diagnostiquons précisément la cause du problème et proposons une réparation durable, non un simple colmatage provisoire.</p>
+          <h3 class="text-white">Dépannage urgence</h3>
+          <p class="text-on-dark">Fuite d'eau, panne de chaudière, canalisation bouchée : notre équipe de dépannage intervient rapidement pour limiter les dégâts et rétablir le confort de votre logement. Nous diagnostiquons précisément la cause du problème et proposons une réparation durable, non un simple colmatage provisoire.</p>
         </div>
       </div>
     </div>
@@ -330,8 +329,7 @@
 
     <div class="footer-bottom">
       <p>&copy; <span data-year>2025</span> VIDA Habitat. Tous droits réservés.</p>
-      <!-- PLACEHOLDER : pages légales à créer -->
-      <p><a href="#">Mentions légales</a> · <a href="#">Politique de confidentialité</a></p>
+      <p><a href="../mentions-legales.html">Mentions légales</a> · <a href="../confidentialite.html">Politique de confidentialité</a></p>
     </div>
   </div>
 </footer>
